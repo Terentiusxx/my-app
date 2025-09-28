@@ -24,12 +24,10 @@ html {
 body {
 	font-family: 'Inter', sans-serif !important;
 	color: black;
-	background-image: 
-		linear-gradient(rgba(229, 231, 235, 1) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(229, 231, 235, 1) 1px, transparent 1px);
 	background-size: 40px 40px;
 	background-position: 0 0, 0 0;
 	background-attachment: fixed;
+	background-color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -254,17 +254,6 @@ const Publications: React.FC<PublicationsProps> = () => {
             boxSizing: "border-box",
           }}
         >
-      {/* background grid */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <svg width="100%" height="100%" className="w-full h-full">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e5e7eb" strokeWidth="1" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      </div>
 
       <div className="relative z-10 flex flex-col md:flex-row w-full max-w-6xl mx-auto bg-transparent px-6 box-border md:items-stretch">
         {/* left text stack */}
@@ -311,17 +300,19 @@ const Publications: React.FC<PublicationsProps> = () => {
       </div>
 
           {/* White panel after Publications with a large button */}
-          <div className="relative z-10 w-full border-t border-neutral-200">
+          <div className="relative z-10 w-full">
             <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 text-center">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Want to see more?</h2>
               <Link
                 href="/publications"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="magnetic-area relative py-4 px-8 text-[18px] border-2 border-black rounded-full bg-transparent hover:bg-black hover:text-white transition-colors duration-300 ease-out cursor-pointer inline-block text-center no-underline group"
+                className="magnetic-area inline-flex items-center gap-4 px-8 py-4 border border-orange-400 hover:bg-orange-100 text-black font-medium text-lg rounded-full transition-colors duration-300 cursor-pointer"
               >
-                <span className="relative z-10">View more publications</span>
-                <div className="absolute inset-0 bg-black rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></div>
+                View publications
+                <span className="inline-grid place-items-center h-8 w-8 rounded-full transition-colors">
+                  <span className="text-orange-400">→</span>
+                </span>
               </Link>
             </div>
           </div>

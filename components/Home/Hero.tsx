@@ -9,11 +9,14 @@ import Horizontal from "@/components/Home/Horizontal";
 import Publications from "@/components/Home/Publications";
 import Testimonials from "@/components/Home/Testimonials";
 import MediaSlider from "./mediaslider";
+import Divider from "@/components/layout/Divider";
+import Hr from "@/components/layout/Hr";
 
 export default function Hero() {
   const imageUrl = "/hero.jpg";
   const ref = useRef<HTMLDivElement | null>(null);
   const prefersReduced = useReducedMotion();
+  
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -91,8 +94,16 @@ export default function Hero() {
       <div className="relative z-20 bg-white rounded-9xl">
         <Introduction />
       </div>
+      <Divider width="xl" />
       <MediaSlider />
-      <Publications />
+      <Divider width="xl" />
+
+      
+      {/* Research Section with Title */}
+      <div className="px-6 md:px-10 lg:px-14 py-10 md:py-14">
+        <Horizontal />
+        <Publications />
+      </div>
     </section>
   );
 }

@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mux/mux-node": "^12.8.0",
     "@mux/mux-player-react": "^3.6.0",
     "@types/video.js": "^7.3.58",
     "framer-motion": "^12.23.12",
