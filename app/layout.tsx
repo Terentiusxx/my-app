@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import "./globals.css";
 
 const font = Inter({
@@ -22,11 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${font.className} antialiased`}
+        className={`${font.className} antialiased overflow-x-hidden`}
       >
-        <Navbar />
-        {children}
-        Footer
+  <Navbar />
+  {children}
+  <Footer />
       </body>
     </html>
   );

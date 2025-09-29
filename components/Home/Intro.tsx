@@ -18,7 +18,7 @@ function Title() {
 
 export default function Intro() {
     return (
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-hidden mt-15">
             <Title />
             <div className="relative mx-auto max-w-7xl gap-4 px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 mb-10">
                 <motion.div
@@ -36,16 +36,16 @@ export default function Intro() {
                         type: "spring",
                     }}>
                     <p className="text-gray-600 text-justify text-lg">
-                        <span className="text-black font-medium">
+                        <span className="text-orange-600 font-medium">
                             Nothing about me is self-made. I owe God everything!
                         </span>{" "}
                         I feel like people are a little too serious, and hey, that is cool and I love it, but that is not me. Not to say I am not serious. Allow me to introduce myself: I am a{" "}
-                        <span className="text-black font-medium">
+                        <span className="text-orange-600 font-medium">
                             Doctor of Philosophy in Statistics
                         </span>{" "}
                         with a Postgraduate Certificate in Learning and Education, Master of Research in Mathematical Modelling, Master of Science in Mathematical Science, and Bachelor of Science in Actuarial Science.{" "}
                         I get the work done with no excuses. I am an expert in{" "}
-                        <span className="text-black font-medium">
+                        <span className="text-orange-600 font-medium">
                             statistics, data science, research, education, programming, machine learning, and artificial intelligence
                         </span>, just to name a few. But I bring something extra to the table: a unique blend of technical expertise and creative energy that makes complex problems feel approachable and exciting.
                     </p>

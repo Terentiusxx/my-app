@@ -120,7 +120,7 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
   }, [])
 
   return (
-    <section ref={sectionRef} className={`w-full bg-white px-6 md:px-9 lg:px-12 py-14 md:py-18 ${className}`}>
+    <section ref={sectionRef} className={`w-full px-6 md:px-9 lg:px-12 py-14 md:py-18 ${className}`}>
       {/* Header row - another 5% smaller */}
       <div ref={headerRef} className="mb-10 md:mb-14">
         <div className='pl-9'>

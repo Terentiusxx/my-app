@@ -43,6 +43,7 @@ const Publications: React.FC<PublicationsProps> = () => {
   const imagePanel3Ref = useRef<HTMLDivElement>(null);
 
   const cardRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   const publicationsData = [
     {
@@ -136,7 +137,6 @@ const Publications: React.FC<PublicationsProps> = () => {
   const computeEnd = () => Math.max(0, (textSlider.scrollHeight || 0) - window.innerHeight);
   const extraEndPx = 60; // extend a bit later
   let endDistance = computeEnd();
-    console.log(endDistance);
 
     // pin the card for the entire text stack scroll distance
     const pinTrigger = ScrollTrigger.create({
@@ -145,7 +145,9 @@ const Publications: React.FC<PublicationsProps> = () => {
       end: `+=${endDistance + extraEndPx}`,
       pin: card,
       pinSpacing: true,
+      pinReparent: true,
       scrub: false,
+      markers: false,
     });
 
     // blinds animation over the same distance
@@ -155,6 +157,8 @@ const Publications: React.FC<PublicationsProps> = () => {
         start: "top top",
     end: `+=${endDistance + extraEndPx}`,
         scrub: 1,
+        pin: false,
+        markers: false,
       },
     });
 
@@ -183,7 +187,30 @@ const Publications: React.FC<PublicationsProps> = () => {
 
     return () => {
       window.removeEventListener("resize", onResize);
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      pinTrigger.kill();
+      blindsTl.scrollTrigger && blindsTl.scrollTrigger.kill();
+    };
+  }, []);
+
+  // Fade-in for CTA section (matches MediaSlider header pattern)
+  useEffect(() => {
+    const el = ctaRef.current;
+    if (!el) return;
+    gsap.set(el, { opacity: 0, y: 28 });
+    const tween = gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 70%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    return () => {
+      tween.scrollTrigger && tween.scrollTrigger.kill();
+      tween.kill();
     };
   }, []);
 
@@ -201,7 +228,7 @@ const Publications: React.FC<PublicationsProps> = () => {
         initial="hidden"
         animate={controls}
         variants={textVariants}
-        className="text-orange-500 font-bold tracking-widest uppercase mb-4 text-base"
+        className="text-orange-600 font-bold tracking-widest uppercase mb-4 text-base"
       >
         {data.id}
       </motion.span>
@@ -235,14 +262,14 @@ const Publications: React.FC<PublicationsProps> = () => {
   );
 
   return (
-    <section ref={contRef} className="relative h-[160vh]">
+  <section ref={contRef} className="relative overflow-x-hidden">
 
 
       {/* Revealed Publications panel */}
-      <div className="relative z-10">
+  <div className="relative overflow-x-hidden">
         <section
           ref={stickyRef}
-          className="relative min-h-screen bg-white overflow-x-hidden rounded-9xl"
+          className="relative min-h-screen overflow-x-hidden rounded-9xl"
           style={{
             width: "100%",
             maxWidth: "100%",
@@ -269,7 +296,7 @@ const Publications: React.FC<PublicationsProps> = () => {
     <div className="flex-1 relative pl-6 min-w-0">
           <div
             ref={cardRef}
-      className="relative w-full max-w-sm h-[420px] md:max-w-md md:h-[520px] rounded-2xl shadow-2xl overflow-hidden bg-white mt-16 md:mt-24"
+      className="relative z-[1] w-full max-w-sm h-[420px] md:max-w-md md:h-[520px] rounded-2xl shadow-2xl overflow-hidden mt-16 md:mt-24"
           >
             {/* layer one */}
             <div ref={imagePanel1Ref} className="absolute inset-0">
@@ -300,8 +327,8 @@ const Publications: React.FC<PublicationsProps> = () => {
       </div>
 
           {/* White panel after Publications with a large button */}
-          <div className="relative z-10 w-full">
-            <div className="max-w-6xl mx-auto px-6 py-24 md:py-32 text-center">
+          <div className="relative w-full">
+            <div ref={ctaRef} className="max-w-6xl mx-auto px-6 py-24 md:py-32 text-center">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Want to see more?</h2>
               <Link
                 href="/publications"

@@ -45,7 +45,7 @@ const Horizontal: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full relative mx-auto mb-16 min-h-[40vh] flex items-center bg-white">
+    <div className="w-full relative mx-auto mb-16 min-h-[40vh] flex items-center bg-[#f7fafd]">
       
       <section ref={wrapperRef} className="relative w-full flex items-center overflow-hidden z-10">
         {/* Top moving line - Orange */}
