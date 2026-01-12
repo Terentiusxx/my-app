@@ -1,70 +1,66 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import Introduction from "@/components/Home/Intro";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const imageUrl = "/hero.jpg";
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const introcard = React.useRef<HTMLDivElement>(null);
+  const bgRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
+    const lenis = new Lenis();
+    
+    lenis.on("scroll", ScrollTrigger.update);
+    
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
 
-    const triggers: ScrollTrigger[] = [];
-    const cards = gsap.utils.toArray<HTMLElement>(root.querySelectorAll(".card"));
+    gsap.ticker.lagSmoothing(0);
 
-    cards.forEach((card, index) => {
-      if (index >= cards.length - 1) return;
-      const nextCard = cards[index + 1];
-      const inner = card.querySelector<HTMLElement>(`.card-inner`);
-      if (!inner || !nextCard) return;
-
-      const tween = gsap.fromTo(
-        inner,
-        { y: "0%", z: 0, rotationX: 0 },
-        {
-          y: "-50%",
-          z: -250,
-          rotationX: 45,
-          ease: "none",
-          scrollTrigger: {
-            trigger: nextCard,
-            start: "top 85%",
-            end: "top -75%",
-            scrub: true,
-            pin: card,
-            pinSpacing: false,
-            anticipatePin: 1,
-            pinReparent: true,
-          },
-        }
-      );
-      if (tween.scrollTrigger) triggers.push(tween.scrollTrigger);
+    // Parallax effect for background
+    gsap.to(bgRef.current, {
+      y: "-30%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "section",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      }
     });
 
     return () => {
-      triggers.forEach((t) => t.kill());
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
 
   return (
-    <section ref={rootRef} className="relative bg-[#f7fafd]">
+    <section className="relative">
+      {/* Shared blurred background - spans entire section */}
+      <div
+        ref={bgRef}
+        aria-hidden
+        className="absolute inset-0 bg-center bg-cover brightness-[.2] -z-10 will-change-transform"
+        style={{ 
+          backgroundImage: `url(${imageUrl})`,
+          height: '140%',
+          top: '-20%'
+        }}
+      />
+      
       <div className="sticky-cards relative">
         {/* Card 1: Hero visual */}
-        <div className="card relative min-h-screen">
+        <div className="card relative h-screen">
           <div className="card-inner relative h-screen will-change-transform [transform-style:preserve-3d]">
-            <div className="relative h-full overflow-hidden bg-black">
-              {/* Blurred bg */}
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-center bg-cover scale-110 grayscale brightness-[.2]"
-                style={{ backgroundImage: `url(${imageUrl})` }}
-              />
+            <div className="relative h-full overflow-hidden">
               {/* Sharp portrait */}
               <div
                 aria-hidden
@@ -97,9 +93,9 @@ export default function Hero() {
         </div>
 
         {/* Card 2: Introduction */}
-        <div className="card relative min-h-screen z-10">
+        <div ref={introcard} className="card relative h-screen z-10">
           <div className="card-inner relative h-screen will-change-transform [transform-style:preserve-3d]">
-            <div className="h-full flex items-center bg-[#f7fafd]">
+            <div className="h-full flex items-start justify-center px-8 md:px-16 pt-20">
               <Introduction />
             </div>
           </div>

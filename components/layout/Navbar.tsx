@@ -193,12 +193,11 @@ const Navbar: React.FC = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // If we've scrolled past the first screen (roughly where white section starts)
-      // You can adjust this threshold based on your exact layout
-      if (scrollY > windowHeight * 0.8) {
-        setIsDarkSection(false); // We're in the white section
+      // Change to dark when we reach WhatIDo section (after 2 viewport heights: Hero + Intro)
+      if (scrollY > windowHeight * 2) {
+        setIsDarkSection(false); // We're in the white WhatIDo section
       } else {
-        setIsDarkSection(true); // We're in the dark hero section
+        setIsDarkSection(true); // We're in the dark hero/intro sections
       }
     };
 

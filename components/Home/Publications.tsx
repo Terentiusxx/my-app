@@ -144,7 +144,7 @@ const Publications: React.FC<PublicationsProps> = () => {
       start: "top top",
       end: `+=${endDistance + extraEndPx}`,
       pin: card,
-      pinSpacing: true,
+      pinSpacing: false, // Disable automatic pin spacing
       pinReparent: true,
       scrub: false,
       markers: false,
@@ -263,10 +263,8 @@ const Publications: React.FC<PublicationsProps> = () => {
 
   return (
   <section ref={contRef} className="relative overflow-x-hidden">
-
-
       {/* Revealed Publications panel */}
-  <div className="relative overflow-x-hidden">
+      <div className="relative overflow-x-hidden">
         <section
           ref={stickyRef}
           className="relative min-h-screen overflow-x-hidden rounded-9xl"
@@ -279,6 +277,7 @@ const Publications: React.FC<PublicationsProps> = () => {
             marginLeft: 0,
             marginRight: 0,
             boxSizing: "border-box",
+            paddingBottom: "40px",
           }}
         >
 
@@ -328,13 +327,13 @@ const Publications: React.FC<PublicationsProps> = () => {
 
           {/* White panel after Publications with a large button */}
           <div className="relative w-full">
-            <div ref={ctaRef} className="max-w-6xl mx-auto px-6 py-24 md:py-32 text-center">
+            <div ref={ctaRef} className="max-w-6xl mx-auto px-6 py-12 md:py-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-8">Want to see more?</h2>
               <Link
                 href="/publications"
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="magnetic-area inline-flex items-center gap-4 px-8 py-4 border border-orange-400 hover:bg-orange-100 text-black font-medium text-lg rounded-full transition-colors duration-300 cursor-pointer"
+                className="magnetic-area inline-flex items-center gap-4 px-4 py-2 border border-orange-400 hover:bg-orange-100 text-black font-medium text-lg rounded-full transition-colors duration-300 cursor-pointer"
               >
                 View publications
                 <span className="inline-grid place-items-center h-8 w-8 rounded-full transition-colors">
