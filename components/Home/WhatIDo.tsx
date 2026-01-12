@@ -21,7 +21,7 @@ const services: Service[] = [
     category: 'Education',
     description:
       'I teach statistics, data science, and computational methods at undergraduate and postgraduate levels, focusing on clarity, critical thinking, and long-term understanding.',
-    image: '/Teaching.png',
+    image: '/teaching.png',
   },
   {
     title: 'Statistical & Data Analysis',
@@ -35,21 +35,21 @@ const services: Service[] = [
     category: 'Technology',
     description:
       'I develop and apply machine learning methods to explore patterns, build predictive models, and evaluate interventions, translating complex outputs into practical insight.',
-    image: '/ai.jpg',
+    image: '/ai.jpeg',
   },
   {
     title: 'Research & Evaluation',
     category: 'Methodology',
     description:
       'I support research teams with study design, data management, and programme evaluation, producing analyses, reports, and evidence that measure impact and effectiveness.',
-    image: '/research.jpg',
+    image: '/research.png',
   },
   {
     title: 'Consulting',
     category: 'Consultancy',
     description:
       'I work with universities, organisations, and research teams to provide data analysis, methodological support, and evaluation across applied research projects.',
-    image: '/consulting.jpg',
+    image: '/consulting.png',
   },
   {
     title: 'Mentorship & Supervision',
