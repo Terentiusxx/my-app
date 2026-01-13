@@ -193,8 +193,9 @@ const Navbar: React.FC = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
-      // Change to dark when we reach WhatIDo section (after 2 viewport heights: Hero + Intro)
-      if (scrollY > windowHeight * 2) {
+      // Change earlier to account for WhatIDo's -mt-[50vh] rise effect
+      // WhatIDo starts rising at Hero+Intro (2vh) but rises 50vh faster, so effective position is 1.5vh
+      if (scrollY > windowHeight * 1.3) {
         setIsDarkSection(false); // We're in the white WhatIDo section
       } else {
         setIsDarkSection(true); // We're in the dark hero/intro sections

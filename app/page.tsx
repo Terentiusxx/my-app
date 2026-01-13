@@ -2,6 +2,7 @@
 import Hero from "@/components/Home/Hero";
 import WhatIDo from "@/components/Home/WhatIDo";
 import MediaSlider from "@/components/Home/mediaslider";
+import Quote from "@/components/Home/Quote";
 // import Horizontal from "@/components/Home/Horizontal";
 // import Publications from "@/components/Home/Publications";
 import Divider from "@/components/layout/Divider";
@@ -15,8 +16,9 @@ export default function HomePage() {
     <>
       <Hero />
       <WhatIDo />
-      <MediaSlider />
       <LatestResearch />
+      <Quote />
+      <MediaSlider />
       <Testimonials />
       <GetInTouch />
     </>

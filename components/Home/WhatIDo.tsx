@@ -65,6 +65,7 @@ type Props = {
 }
 
 const WhatIDo: React.FC<Props> = ({ className = '' }) => {
+    const logoRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
   const bgTransitionRef = useRef<HTMLDivElement>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -101,10 +102,10 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
   }, [])
 
   useEffect(() => {
-    if (!sectionRef.current || !bgTransitionRef.current) return
+    if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Slide up the section faster than background
+      // Slide up the section
       gsap.fromTo(sectionRef.current,
         { y: '50vh' },
         {
@@ -118,30 +119,31 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
           }
         }
       )
-
-      // Smooth color transition from black to white
-      gsap.fromTo(bgTransitionRef.current,
-        { backgroundColor: '#000000' },
-        {
-          backgroundColor: '#ffffff',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top bottom',
-            end: 'top 50%',
-            scrub: true,
-          }
-        }
-      )
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
 
+  // Infinite logo slider animation
+  useEffect(() => {
+    gsap.fromTo(
+      '.service-card',
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+        }
+      }
+    )
+  }, [])
+
   return (
-    <section ref={sectionRef} className={`relative w-full min-h-screen py-20 overflow-hidden -mt-[50vh] z-20 ${className}`}>
-      {/* Fixed background color transition */}
-      <div ref={bgTransitionRef} className="fixed inset-0 -z-10" style={{ backgroundColor: '#000000' }}></div>
+    <section ref={sectionRef} className={`relative w-full min-h-screen pb-0 overflow-hidden -mt-[50vh] z-20 bg-white ${className}`}>
       
       {/* SVG brush stroke definitions */}
       <svg height="0" width="0" xmlns="http://www.w3.org/2000/svg">
@@ -171,7 +173,7 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
       </svg>
       
       {/* Content Section */}
-      <div className="relative z-10 px-8 md:px-16 py-16">
+      <div className="relative z-10 px-8 md:px-16 pt-16 pb-0">
         {/* Header */}
         <div className="mb-16">
             <div className='flex justify-between items-start mb-12'>
@@ -318,6 +320,167 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Logo Slider */}
+        <div className="mt-20 mb-0 overflow-hidden relative group [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
+          <div className="animate-slide-left-infinite group-hover:animation-pause flex w-max">
+            <div className="flex items-center">
+              <Image 
+                src={"/oxford.png"}
+                alt="Oxford University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/leeds.png"}
+                alt="University of Leeds" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/uwe.png"}
+                alt="University of the West of England" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/openuni.png"}
+                alt="Open University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/aims.png"}
+                alt="AIMS Ghana"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/lse.png"}
+                alt="London School of Economics"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/mei.png"}
+                alt="MEI"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+            </div>
+            
+            <div className="flex items-center">
+              <Image 
+                src={"/oxford.png"}
+                alt="Oxford University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/leeds.png"}
+                alt="University of Leeds" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/uwe.png"}
+                alt="University of the West of England" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/openuni.png"}
+                alt="Open University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/aims.png"}
+                alt="AIMS Ghana"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/lse.png"}
+                alt="London School of Economics"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/mei.png"}
+                alt="MEI"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+            </div>
+            
+            <div className="flex items-center">
+              <Image 
+                src={"/oxford.png"}
+                alt="Oxford University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/leeds.png"}
+                alt="University of Leeds" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/uwe.png"}
+                alt="University of the West of England" 
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/openuni.png"}
+                alt="Open University"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/aims.png"}
+                alt="AIMS Ghana"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/lse.png"}
+                alt="London School of Economics"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+              <Image 
+                src={"/mei.png"}
+                alt="MEI"
+                width={120}
+                height={80}
+                className="object-contain inline-block mx-6"
+              />
+            </div>
           </div>
         </div>
       </div>

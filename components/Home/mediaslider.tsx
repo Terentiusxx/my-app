@@ -38,6 +38,7 @@ const defaultItems: MediaItem[] = [
 
 const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
+  const bgTransitionRef = useRef<HTMLDivElement>(null)
   const row2Ref = useRef<HTMLDivElement>(null)
   const row3Ref = useRef<HTMLDivElement>(null)
 
@@ -45,6 +46,21 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
     if (!sectionRef.current || !row2Ref.current || !row3Ref.current) return
 
     const ctx = gsap.context(() => {
+      // Slide up the section faster - rise effect
+      gsap.fromTo(sectionRef.current,
+        { y: '50vh' },
+        {
+          y: '0vh',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'top 30%',
+            scrub: true,
+          }
+        }
+      )
+
       // Row 2 moves left
       gsap.to(row2Ref.current, {
         x: -100,
@@ -74,7 +90,8 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
   }, [])
 
   return (
-    <section ref={sectionRef} className={`relative w-full min-h-screen py-20 overflow-hidden bg-black ${className}`}>
+    <section ref={sectionRef} className={`relative w-full min-h-screen pb-0 overflow-hidden -mt-[50vh] z-20 bg-black ${className}`}>
+      
       {/* Video Grid Background */}
       <div className="absolute inset-0 flex flex-col justify-center gap-3 p-4 md:p-8">
         {/* Top row - 3 items (static) */}
@@ -203,11 +220,11 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
           <defs>
             <radialGradient id="mediaGradient" cx="0" cy="50%" r="100%" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#000000" stopOpacity="1" />
-              <stop offset="40%" stopColor="#000000" stopOpacity="1" />
-              <stop offset="65%" stopColor="#000000" stopOpacity="0.9" />
-              <stop offset="85%" stopColor="#000000" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#000000" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#000000" stopOpacity="0.6" />
+              <stop offset="40%" stopColor="#000000" stopOpacity="0.5" />
+              <stop offset="65%" stopColor="#000000" stopOpacity="0.4" />
+              <stop offset="85%" stopColor="#000000" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
             </radialGradient>
           </defs>
           <rect width="100" height="100" fill="url(#mediaGradient)" />
@@ -225,11 +242,11 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
           </p>
           
           <div className="flex gap-3">
-            <button className="px-5 py-2 text-sm bg-white text-black rounded-full font-semibold hover:bg-white/90 transition-all duration-300">
-              About Us
+            <button className="px-4 py-1.5 text-xs text-white/80 hover:text-white transition-colors">
+              View All Media →
             </button>
-            <button className="px-5 py-2 text-sm bg-white/10 backdrop-blur-sm text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300">
-              See our work
+            <button className="px-4 py-1.5 text-xs text-white/80 hover:text-white transition-colors">
+              Connect on LinkedIn →
             </button>
           </div>
         </div>

@@ -11,7 +11,7 @@ export default function Hr({ title }: { title: string }) {
                 {/* Hr lines centered within the text container */}
                 <div className="flex flex-col items-center mb-6">
                     <motion.div
-                        className="bg-orange-400 w-28 h-1 rounded-full mb-3"
+                        className="bg-red-600 w-28 h-1 rounded-full mb-3"
                         initial={{
                             opacity: 0,
                             x: -100,
@@ -25,7 +25,7 @@ export default function Hr({ title }: { title: string }) {
                             type: "spring",
                         }}></motion.div>
                     <motion.div
-                        className="bg-orange-400 w-28 h-1 rounded-full"
+                        className="bg-red-600 w-28 h-1 rounded-full"
                         initial={{
                             opacity: 0,
                             x: 200,
@@ -41,7 +41,7 @@ export default function Hr({ title }: { title: string }) {
                 </div>
 
                 {/* Title text */}
-                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[0.77] tracking-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[0.77] tracking-tight text-white">
                     {title.split('\\n').map((line, index) => (
                         <React.Fragment key={index}>
                             {line}
