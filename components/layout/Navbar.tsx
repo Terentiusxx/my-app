@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 
 interface NavItem {
@@ -11,6 +12,7 @@ interface NavItem {
 }
 
 const Navbar: React.FC = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [showX, setShowX] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false); // Prevent clicks during animation
@@ -33,14 +35,14 @@ const Navbar: React.FC = () => {
       description: 'Learn about our story' 
     },
     { 
-      name: 'Media', 
-      href: '/media', 
-      description: 'View our media content' 
-    },
-    { 
       name: 'Publications', 
       href: '/publications', 
       description: 'Read our publications' 
+    },
+        { 
+      name: 'Media', 
+      href: '/media', 
+      description: 'View our media content' 
     },
     { 
       name: 'Testimonials', 
@@ -62,20 +64,12 @@ const Navbar: React.FC = () => {
           setIsOpen(!isOpen);
         }
       }}
-      className={`fixed top-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 ${
-        isDarkSection 
-          ? ' text-white' 
-          : ' text-black'
-      }`}
+      className="fixed top-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-black/80 backdrop-blur-md text-white hover:bg-black/90 ring-1 ring-white/20 shadow-lg"
     >
       <div className="flex flex-col gap-1">
-        <span className={`w-6 h-0.5 transition-all duration-300 ${
-          (isDarkSection || showX) ? 'bg-white' : 'bg-black'
-        } ${showX ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-        <span className={`w-6 h-0.5 transition-all duration-300 ${
-          (isDarkSection || showX) ? 'bg-white' : 'bg-black'
-        } ${showX ? 'opacity-0' : ''}`}></span>
-        <span className={`w-6 h-0.5 transition-all duration-300 ${
+        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${showX ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${showX ? 'opacity-0' : ''}`}></span>
+        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${
           (isDarkSection || showX) ? 'bg-white' : 'bg-black'
         } ${showX ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
       </div>
@@ -190,6 +184,12 @@ const Navbar: React.FC = () => {
   // Scroll detection to change hamburger color based on section
   useEffect(() => {
     const handleScroll = () => {
+      // Only homepage has dark hero section
+      if (pathname !== '/') {
+        setIsDarkSection(false); // All other pages are light by default
+        return;
+      }
+      
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
       
@@ -210,7 +210,7 @@ const Navbar: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   const handleItemHover = (index: number, isHovering: boolean): void => {
     const item = itemsRef.current[index];

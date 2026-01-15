@@ -58,8 +58,8 @@ export default function Hero() {
       
       <div className="sticky-cards relative">
         {/* Card 1: Hero visual */}
-        <div className="card relative h-screen">
-          <div className="card-inner relative h-screen will-change-transform [transform-style:preserve-3d]">
+        <div className="card relative h-[70vh]">
+          <div className="card-inner relative h-full will-change-transform [transform-style:preserve-3d]">
             <div className="relative h-full overflow-hidden">
               {/* Sharp portrait */}
               <div

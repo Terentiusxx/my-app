@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import MuxPlayer from '@mux/mux-player-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Button } from '@/components/ui/button'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -242,12 +243,12 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
           </p>
           
           <div className="flex gap-3">
-            <button className="px-4 py-1.5 text-xs text-white/80 hover:text-white transition-colors">
+            <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10">
               View All Media →
-            </button>
-            <button className="px-4 py-1.5 text-xs text-white/80 hover:text-white transition-colors">
+            </Button>
+            <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10">
               Connect on LinkedIn →
-            </button>
+            </Button>
           </div>
         </div>
       </div>

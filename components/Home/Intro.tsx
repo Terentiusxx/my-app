@@ -5,7 +5,8 @@ import Me1 from "@/public/me3.jpg";
 import Me2 from "@/public/me2.jpg";
 import Me3 from "@/public/me1.jpg";
 import SectionTitle from "@/components/layout/SectionTitle";
-import Divider from "../layout/Divider";
+import Copy from "@/components/Home/Copy";
+import { Button } from "@/components/ui/button";
 
 export default function Intro() {
     return ( 
@@ -97,12 +98,27 @@ export default function Intro() {
                         type: "spring",
                     }}>
                     <SectionTitle text="MY PHILOSOPHY" />
-                    <p className="text-white text-justify text-lg">
-                        Professional doesn't mean stiff. I believe real impact happens when expertise meets authentic enthusiasm. Let's shatter the boring blueprint.
-                    </p>
-                    <p className="text-white/80 text-justify text-base mt-4">
-                        Nothing about me is self-made. I owe God everything!
-                    </p>
+                    <Copy>
+                        <p className="text-white text-justify text-lg">
+                            Professional doesn't mean stiff. I believe real impact happens when expertise meets authentic enthusiasm. Let's shatter the boring blueprint.
+                        </p>
+                    </Copy>
+                    <Copy delay={0.3}>
+                        <p className="text-white/80 text-justify text-base mt-4">
+                            Nothing about me is self-made. I owe God everything!
+                        </p>
+                    </Copy>
+                    <Copy delay={0.5}>
+                        <div className="mt-6">
+                            <Button 
+                                variant="outline" 
+                                className="rounded-full border-2 border-white text-white bg-transparent hover:bg-transparent hover:border-red-600 hover:text-red-600"
+                                onClick={() => window.location.href = '/about'}
+                            >
+                                Read More About Me
+                            </Button>
+                        </div>
+                    </Copy>
                 </motion.div>
                 </div>
             </div>

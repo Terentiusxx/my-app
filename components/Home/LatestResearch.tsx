@@ -1,6 +1,7 @@
  "use client"
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 interface Article {
   date: string;
@@ -109,7 +110,7 @@ const LatestResearch: React.FC<LatestResearchProps> = () => {
               {article.keywords.slice(0, 3).map((keyword, i) => (
                 <span
                   key={i}
-                  className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
+                  className="text-xs bg-gray-100 text-gray-700 px-2.5 py-0.5 rounded-full font-medium"
                 >
                   {keyword}
                 </span>
@@ -133,12 +134,14 @@ const LatestResearch: React.FC<LatestResearchProps> = () => {
         transition={{ duration: 0.6, delay: 0.5 }}
         viewport={{ once: true }}
       >
-        <button className="inline-flex items-center gap-3 text-base font-medium text-gray-900 hover:text-red-600 transition-colors group">
+        <Button 
+          variant="outline" 
+          size="lg" 
+          className="rounded-full border-2 border-gray-900 hover:border-red-600 hover:bg-transparent hover:text-red-600 text-gray-900"
+          onClick={() => window.location.href = '/publications'}
+        >
           View All Research
-          <span className="text-xl text-red-600 group-hover:translate-x-1 transition-transform">
-            →
-          </span>
-        </button>
+        </Button>
       </motion.div>
     </section>
   );

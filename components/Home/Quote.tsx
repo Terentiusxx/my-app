@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Copy from '@/components/Home/Copy'
 
 type Props = {
   className?: string
@@ -27,9 +28,11 @@ const Quote: React.FC<Props> = ({ className = '' }) => {
               </div>
               
               {/* Quote text */}
-              <blockquote className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-relaxed">
-                Data doesn't lie, but it doesn't speak for itself either. My job is to listen carefully, interpret honestly, and communicate clearly.
-              </blockquote>
+              <Copy>
+                <blockquote className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-relaxed">
+                  Data doesn't lie, but it doesn't speak for itself either. My job is to listen carefully, interpret honestly, and communicate clearly.
+                </blockquote>
+              </Copy>
             </div>
           </motion.div>
 

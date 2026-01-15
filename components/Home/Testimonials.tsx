@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "@/components/ui/button";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,32 +42,9 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const headerRef = useRef<HTMLDivElement | null>(null);
-
   const [index, setIndex] = useState(0);
   const prev = () => setIndex((index - 1 + testimonials.length) % testimonials.length);
   const next = () => setIndex((index + 1) % testimonials.length);
-
-  useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    gsap.set(el, { opacity: 0, y: 28 });
-    const tween = gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: el,
-        start: "top 60%",
-        toggleActions: "play none none reverse",
-      },
-    });
-    return () => {
-      tween.scrollTrigger && tween.scrollTrigger.kill();
-      tween.kill();
-    };
-  }, []);
 
   return (
     <section className="w-full px-6 md:px-9 lg:px-12 py-14 md:py-18 bg-black">
@@ -78,25 +56,24 @@ export default function Testimonials() {
             <div>
               <p className="text-gray-400 text-sm max-w-xs">Real stories from real people showcasing authentic experiences</p>
             </div>
-            <button
-              type="button"
-              className="flex items-center gap-3 text-sm font-medium text-white hover:text-red-500 hover:cursor-pointer transition-colors"
+            <Button
+              variant="link"
+              size="sm"
+              className="flex items-center gap-3 text-white hover:text-red-500 p-0"
+              onClick={() => window.location.href = '/testimonials'}
             >
               view all testimonials
-              <span className="text-xl text-red-600 hover:text-red-500 transition-colors">
-                →
-              </span>
-            </button>
+            </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10" ref={headerRef}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
           <img
             src={'/class.jpg'}
             alt="Publications 3"
             className="w-full h-[400px] object-cover rounded-2xl"
           />
           <div className="grid grid-cols-[5%_90%_5%] gap-0">
-            <button className="p-0 m-0 text-white hover:text-red-500 transition-colors" onClick={prev}>❮</button> 
+            <Button variant="ghost" size="icon-sm" className="text-white hover:text-red-500 hover:bg-transparent" onClick={prev}>❮</Button> 
             <div className="bg-gray-900 border border-gray-800 rounded-2xl shadow-md p-8 flex flex-col h-full">
               <svg width="32" height="32" fill="none" className="mb-4 opacity-20"><rect width="32" height="32" rx="16"/><text x="8" y="24" fontSize="28" fill="#fff" opacity=".3">"</text></svg>
               <p className="text-gray-300 text-base mb-6">{testimonials[index].text}</p>
@@ -107,7 +84,7 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-          <button className="text-white hover:text-red-500 transition-colors" onClick={next}>❯</button>
+          <Button variant="ghost" size="icon-sm" className="text-white hover:text-red-500 hover:bg-transparent" onClick={next}>❯</Button>
           </div>
         </div>
       </div>

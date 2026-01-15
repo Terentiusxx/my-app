@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 
 interface SectionTitleProps {
   text: string;
+  color?: string;
 }
 
-export default function SectionTitle({ text }: SectionTitleProps) {
+export default function SectionTitle({ text, color }: SectionTitleProps) {
   const uniqueId = React.useId().replace(/:/g, '');
   const animateRef = React.useRef<SVGAnimateElement>(null);
   
@@ -23,7 +24,7 @@ export default function SectionTitle({ text }: SectionTitleProps) {
       viewport={{ once: true, margin: "-100px" }}
     >
       <div className="relative inline-block">
-        <h2 className="relative text-white text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide">
+        <h2 className={`relative text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide ${color === 'black' ? 'text-black' : 'text-white'}`}>
           {text}
         </h2>
         {/* Brush stroke underline */}

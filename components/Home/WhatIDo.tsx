@@ -3,8 +3,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Copy from './Copy'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -210,16 +212,13 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                 </motion.h1>
                 </div>
             </div>
-            <motion.div 
-              className="border-l-4 border-red-600 pl-6 max-w-md"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-                <p className="text-gray-700 text-base leading-relaxed">
-                  I bring innovation through expertise, authentic energy, and a passion for excellence. Whether it's inspiring audiences, advising organizations, or creating impactful content, I deliver results that matter.
-                </p>
-            </motion.div>
+            <div className="border-l-4 border-red-600 pl-6 max-w-md">
+                <Copy delay={0.4}>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    I bring innovation through expertise, authentic energy, and a passion for excellence. Whether it's inspiring audiences, advising organizations, or creating impactful content, I deliver results that matter.
+                  </p>
+                </Copy>
+            </div>
         </div>
 
         {/* Services Section */}
@@ -235,20 +234,24 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
               {/* Navigation Arrows */}
               <div className="flex gap-2">
                 {canScrollLeft && (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
                     onClick={scrollLeft}
-                    className="w-8 h-8 rounded-full border border-gray-300 text-gray-700 flex items-center justify-center hover:border-black hover:text-black transition-all duration-300"
+                    className="rounded-full"
                   >
                     <span className="text-sm">←</span>
-                  </button>
+                  </Button>
                 )}
                 {canScrollRight && (
-                  <button
+                  <Button
+                    variant="outline"
+                    size="icon-sm"
                     onClick={scrollRight}
-                    className="w-8 h-8 rounded-full border border-gray-300 text-gray-700 flex items-center justify-center hover:border-black hover:text-black transition-all duration-300"
+                    className="rounded-full"
                   >
                     <span className="text-sm">→</span>
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
@@ -311,10 +314,10 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                       <p className="text-white/95 mb-4 leading-relaxed text-sm">
                         {service.description}
                       </p>
-                      <button className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all duration-300">
+                      <Button variant="link" size="sm" className="text-white hover:text-white p-0 gap-2 hover:gap-3">
                         View Details
                         <span>→</span>
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>
