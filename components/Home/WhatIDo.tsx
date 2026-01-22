@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Copy from './Copy'
+import Copy from './textanimate'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -51,14 +51,14 @@ const services: Service[] = [
     category: 'Consultancy',
     description:
       'I work with universities, organisations, and research teams to provide data analysis, methodological support, and evaluation across applied research projects.',
-    image: '/consulting.png',
+    image: '/mentoring.jpg',
   },
   {
     title: 'Mentorship & Supervision',
     category: 'Development',
     description:
       'I mentor students and early-career professionals, providing academic supervision, career guidance, and support through research and professional development journeys.',
-    image: '/mentoring.jpg',
+    image: '/consulting.png',
   },
 ];
 

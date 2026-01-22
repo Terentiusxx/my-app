@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import Copy from "@/components/Home/Copy";
+import Copy from "@/components/Home/textanimate";
 import { Button } from "@/components/ui/button";
 import INFO from "@/src/data/user";
 import SEO from "@/src/data/seo";
@@ -187,8 +187,8 @@ const Testimonials = () => {
           <div className="relative h-[50vh] flex items-center justify-center text-white text-center bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: "url('/students.jpg')" }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/70 to-black/60"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30 flex flex-col justify-center items-center px-5">
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/30 to-black/60"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30 flex flex-col justify-center items-center px-5">
               <Copy animateOnScroll={false} delay={0.3}>
                 <h1 className="text-5xl font-bold mb-5 font-playfair">What Students Say</h1>
               </Copy>
@@ -434,7 +434,7 @@ const Testimonials = () => {
           {/* Close Button */}
           <button
             onClick={revealGrid}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-red-500"
+            className="absolute top-6 right-16 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors z-[10002] focus:outline-none focus:ring-2 focus:ring-red-500"
             aria-label="Close and view all feedback"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

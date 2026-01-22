@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import Head from "next/head";
 import { Button } from "@/components/ui/button";
-import Copy from "@/components/Home/Copy";
+import PageHero from "@/components/layout/PageHero";
 import INFO from "@/src/data/user";
 import SEO from "@/src/data/seo";
 
@@ -165,25 +165,11 @@ export default function PublicationsPage() {
       </Head>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="bg-white border-b border-gray-200">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <Copy animateOnScroll={false} delay={0.2}>
-              <div className="max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">
-                  RESEARCH OUTPUT
-                </p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                  Publications
-                </h1>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Peer-reviewed research spanning health psychology, body image, telemedicine, 
-                  youth development, and actuarial science. Browse by research area, methodology, or year.
-                </p>
-              </div>
-            </Copy>
-          </div>
-        </section>
+        <PageHero
+          label="Research Output"
+          title="Publications"
+          description="Peer-reviewed research spanning health psychology, body image, telemedicine, youth development, and actuarial science. Browse by research area, methodology, or year."
+        />
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-6 py-12">

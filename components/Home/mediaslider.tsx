@@ -242,14 +242,14 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
             Explore my latest LinkedIn video creations, keynotes, and insights. Combining expertise with authentic enthusiasm to deliver impactful content.
           </p>
           
-          <div className="flex gap-3">
-            <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10">
-              View All Media →
-            </Button>
-            <Button variant="ghost" size="sm" className="text-white/80 hover:text-white hover:bg-white/10">
-              Connect on LinkedIn →
-            </Button>
-          </div>
+          <Button 
+            variant="outline" 
+            size="lg"
+            className="rounded-full border-2 border-white text-white bg-transparent hover:bg-transparent hover:border-red-600 hover:text-red-600"
+            onClick={() => window.location.href = '/media'}
+          >
+            View All Media
+          </Button>
         </div>
       </div>
     </section>

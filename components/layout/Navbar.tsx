@@ -24,36 +24,13 @@ const Navbar: React.FC = () => {
   const tl = useRef<gsap.core.Timeline | null>(null);
 
   const navItems: NavItem[] = [
-    { 
-      name: 'Home', 
-      href: '/', 
-      description: 'Back to homepage' 
-    },
-    { 
-      name: 'About', 
-      href: '/about', 
-      description: 'Learn about our story' 
-    },
-    { 
-      name: 'Publications', 
-      href: '/publications', 
-      description: 'Read our publications' 
-    },
-        { 
-      name: 'Media', 
-      href: '/media', 
-      description: 'View our media content' 
-    },
-    { 
-      name: 'Testimonials', 
-      href: '/testimonials', 
-      description: 'What people say about us' 
-    },
-    { 
-      name: 'Contact', 
-      href: '/contact', 
-      description: 'Get in touch with us' 
-    }
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Publications', href: '/publications' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Media', href: '/media' },
+    { name: 'Testimonials', href: '/testimonials' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   // Hamburger menu button that transforms with delay
@@ -64,14 +41,14 @@ const Navbar: React.FC = () => {
           setIsOpen(!isOpen);
         }
       }}
-      className="fixed top-8 right-8 z-50 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-black/80 backdrop-blur-md text-white hover:bg-black/90 ring-1 ring-white/20 shadow-lg"
+      className="fixed top-6 right-6 z-[10001] w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-black/80 backdrop-blur-md text-white hover:bg-black/90 ring-1 ring-white/20 shadow-lg"
     >
-      <div className="flex flex-col gap-1">
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${showX ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${showX ? 'opacity-0' : ''}`}></span>
-        <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${
+      <div className="flex flex-col gap-0.5">
+        <span className={`w-4 h-0.5 bg-white transition-all duration-300 ${showX ? 'rotate-45 translate-y-1' : ''}`}></span>
+        <span className={`w-4 h-0.5 bg-white transition-all duration-300 ${showX ? 'opacity-0' : ''}`}></span>
+        <span className={`w-4 h-0.5 bg-white transition-all duration-300 ${
           (isDarkSection || showX) ? 'bg-white' : 'bg-black'
-        } ${showX ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+        } ${showX ? '-rotate-45 -translate-y-1' : ''}`}></span>
       </div>
     </button>
   );
@@ -216,18 +193,19 @@ const Navbar: React.FC = () => {
     const item = itemsRef.current[index];
     if (!item) return;
 
-    const arrow = item.querySelector('.menu-arrow') as HTMLElement;
-    const text = item.querySelector('.menu-text') as HTMLElement;
-    const description = item.querySelector('.menu-description') as HTMLElement;
-    
+    const arrow = item.querySelector('.menu-arrow') as HTMLElement | null;
+    const text = item.querySelector('.menu-text') as HTMLElement | null;
+    const description = item.querySelector('.menu-description') as HTMLElement | null;
+
     if (isHovering) {
-      gsap.to(text, { x: 20, duration: 0.4, ease: 'power3.out' });
-      gsap.to(description, { x: 20, duration: 0.4, ease: 'power3.out' });
+      if (text) gsap.to(text, { x: 20, duration: 0.4, ease: 'power3.out' });
+      if (description) gsap.to(description, { x: 20, duration: 0.4, ease: 'power3.out' });
       if (arrow) {
         gsap.to(arrow, { x: 10, opacity: 1, scale: 1.2, duration: 0.4, ease: 'power3.out' });
       }
     } else {
-      gsap.to([text, description], { x: 0, duration: 0.4, ease: 'power3.out' });
+      const targets = [text, description].filter(Boolean) as HTMLElement[];
+      if (targets.length) gsap.to(targets, { x: 0, duration: 0.4, ease: 'power3.out' });
       if (arrow) {
         gsap.to(arrow, { x: 0, opacity: 0.6, scale: 1, duration: 0.4, ease: 'power3.out' });
       }
@@ -239,7 +217,8 @@ const Navbar: React.FC = () => {
       <MenuButton />
       <div
         ref={menuRef}
-        className="fixed inset-0 z-40"
+        suppressHydrationWarning
+        className="fixed inset-0 z-[9999]"
         style={{ display: 'none' }}
       >
         {/* Full Screen Overlay */}
@@ -250,24 +229,20 @@ const Navbar: React.FC = () => {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
           }}
         >
-          {/* Header */}
-          <header 
-            ref={headerRef}
-            className="relative z-10 flex justify-between items-center p-8 md:p-12"
-          >
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white">
-                Menu
-              </h1>
-              <p className="text-white/60 text-sm mt-1">
-                Navigate to your destination
-              </p>
-            </div>
-          </header>
+          {/* Menu Items - center entire block vertically so header sits directly above links */}
+          <main className="flex-1 flex flex-col items-center justify-center px-6 md:px-12 lg:px-24 max-h-screen overflow-auto">
+            <header 
+              ref={headerRef}
+              className="relative z-20 flex justify-center items-center pb-2 mb-6 md:mb-8"
+            >
+              <div className="text-center">
+                <h1 className="text-2xl md:text-3xl font-bold text-white">
+                  Menu
+                </h1>
+              </div>
+            </header>
 
-          {/* Menu Items */}
-          <main className="flex-1 flex flex-col justify-center px-8 md:px-12 lg:px-24">
-            <div className="grid grid-cols-2 gap-8 md:gap-12">
+            <nav className={`flex flex-col items-center gap-2 w-full max-w-md mx-auto ${isAnimating ? 'pointer-events-none' : ''}`}>
               {navItems.map((item, index) => (
                 <Link
                   key={item.name}
@@ -275,34 +250,15 @@ const Navbar: React.FC = () => {
                   ref={(el) => {
                     itemsRef.current[index] = el;
                   }}
-                  className={`menu-link-item-holder group block py-4 md:py-6 border-b border-white/10 ${
-                    isAnimating ? 'pointer-events-none' : ''
-                  }`} // Disable pointer events during animation
+                  className={`menu-link-item-holder group w-full text-center py-0 md:py-0.5 text-lg md:text-xl lg:text-2xl font-medium text-white hover:text-gray-300 transition-colors`}
                   onMouseEnter={() => !isAnimating && handleItemHover(index, true)}
                   onMouseLeave={() => !isAnimating && handleItemHover(index, false)}
                   onClick={handleClose}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <div className="menu-text text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-none">
-                        {item.name}
-                      </div>
-                      <div className="menu-description text-white/60 text-sm md:text-base">
-                        {item.description}
-                      </div>
-                    </div>
-                    <svg 
-                      className="menu-arrow w-6 h-6 md:w-8 md:h-8 text-white opacity-60 ml-4" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+                  {item.name}
                 </Link>
               ))}
-            </div>
+            </nav>
           </main>
         </div>
       </div>

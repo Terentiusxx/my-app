@@ -3,7 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Copy from '@/components/Home/Copy'
+import Copy from '@/components/Home/textanimate'
 
 type Props = {
   className?: string

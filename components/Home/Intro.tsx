@@ -1,11 +1,12 @@
 "use client"
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Me1 from "@/public/me3.jpg";
 import Me2 from "@/public/me2.jpg";
 import Me3 from "@/public/me1.jpg";
 import SectionTitle from "@/components/layout/SectionTitle";
-import Copy from "@/components/Home/Copy";
+import Copy from "@/components/Home/textanimate";
 import { Button } from "@/components/ui/button";
 
 export default function Intro() {
@@ -110,13 +111,14 @@ export default function Intro() {
                     </Copy>
                     <Copy delay={0.5}>
                         <div className="mt-6">
-                            <Button 
-                                variant="outline" 
-                                className="rounded-full border-2 border-white text-white bg-transparent hover:bg-transparent hover:border-red-600 hover:text-red-600"
-                                onClick={() => window.location.href = '/about'}
-                            >
-                                Read More About Me
-                            </Button>
+                            <Link href="/about">
+                                <Button 
+                                    variant="outline" 
+                                    className="rounded-full border-2 border-white text-white bg-transparent hover:bg-transparent hover:border-red-600 hover:text-red-600"
+                                >
+                                    Read More About Me
+                                </Button>
+                            </Link>
                         </div>
                     </Copy>
                 </motion.div>

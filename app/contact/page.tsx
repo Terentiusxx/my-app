@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Copy from "@/components/Home/Copy";
+import Copy from "@/components/Home/textanimate";
 import SectionTitle from "@/components/layout/SectionTitle";
 import INFO from "@/src/data/user";
 import SEO from "@/src/data/seo";
