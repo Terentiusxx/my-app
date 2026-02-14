@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TestimonialType {
+  INDIVIDUAL
+  COHORT
+}
+
+model Testimonial{
+  id String @id @default(cuid())
+  message String
+  authorLabel String
+  institution String?
+  type TestimonialType
+  isFeatured Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum PlatformType {
+  LINKEDIN
+  YOUTUBE
+  PRIVATELEARN
+  INSTAGRAM
+}
+
+model MediaPost{
+  id String @id @default(cuid())
+  title String 
+  playbackId String
+  platform PlatformType
+  description String
+  duration String
+  tags String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Publication{
+  id String @id @default(cuid())
+  title String
+  authors String[]
+  year Int 
+  journal String
+  volume String?
+  pages String?
+  doi String?
+  link String
+  abstract String
+  researchArea String[]
+  method String[]
+  keywords String[]
+  openAccess Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
