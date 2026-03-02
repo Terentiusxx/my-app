@@ -7,7 +7,80 @@ import PageHero from "@/components/layout/PageHero";
 import INFO from "@/src/data/user";
 import SEO from "@/src/data/seo";
 
+type Publication = {
+  title: string;
+  authors: string[];
+  year: number;
+  journal: string;
+  volume?: string;
+  pages?: string;
+  doi?: string;
+  link: string;
+  abstract: string;
+  researchArea: string[];
+  method: string[];
+  keywords: string[];
+  openAccess?: boolean;
+};
 
+interface PublicationUIProps {
+  initialPublications: Publication[];
+}
+
+export default function PublicationUI({ initialPublications }: PublicationUIProps) {
+  const currentSEO = SEO.find((item) => item.page === "publications");
+  
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedArea, setSelectedArea] = useState("All");
+  const [selectedMethod, setSelectedMethod] = useState("All");
+  const [selectedYear, setSelectedYear] = useState<string | number>("All");
+
+  // Extract unique values from publications
+  const researchAreas = useMemo(() => {
+    const areas = new Set<string>();
+    initialPublications.forEach(pub => pub.researchArea.forEach(area => areas.add(area)));
+    return ["All", ...Array.from(areas).sort()];
+  }, [initialPublications]);
+
+  const methods = useMemo(() => {
+    const methodSet = new Set<string>();
+    initialPublications.forEach(pub => pub.method.forEach(method => methodSet.add(method)));
+    return ["All", ...Array.from(methodSet).sort()];
+  }, [initialPublications]);
+
+  const years = useMemo(() => {
+    const yearSet = new Set(initialPublications.map(p => p.year));
+    return ["All", ...Array.from(yearSet).sort((a, b) => b - a)];
+  }, [initialPublications]);
+
+  // Filtered publications
+  const filteredPublications = useMemo(() => {
+    return initialPublications.filter((pub) => {
+      // Search filter
+      const matchesSearch = searchQuery === "" || 
+        pub.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        pub.keywords.some(k => k.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        pub.abstract.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // Area filter
+      const matchesArea = selectedArea === "All" || pub.researchArea.includes(selectedArea);
+
+      // Method filter
+      const matchesMethod = selectedMethod === "All" || pub.method.includes(selectedMethod);
+
+      // Year filter
+      const matchesYear = selectedYear === "All" || pub.year === selectedYear;
+
+      return matchesSearch && matchesArea && matchesMethod && matchesYear;
+    });
+  }, [initialPublications, searchQuery, selectedArea, selectedMethod, selectedYear]);
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedArea("All");
+    setSelectedMethod("All");
+    setSelectedYear("All");
+  };
 
   return (
     <>

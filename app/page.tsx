@@ -1,4 +1,3 @@
-// app/page.tsx
 import Hero from "@/components/Home/Hero";
 import WhatIDo from "@/components/Home/WhatIDo";
 import MediaSlider from "@/components/Home/mediaslider";

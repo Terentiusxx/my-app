@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Publications', href: '/publications' },
-    { name: 'Projects', href: '/projects' },
+    // { name: 'Projects', href: '/projects' },
     { name: 'Media', href: '/media' },
     { name: 'Testimonials', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
           setIsOpen(!isOpen);
         }
       }}
-      className="fixed top-6 right-6 z-[10001] w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-black/80 backdrop-blur-md text-white hover:bg-black/90 ring-1 ring-white/20 shadow-lg"
+      className="fixed top-6 right-6 z-101 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 bg-black/80 backdrop-blur-md text-white hover:bg-black/90 ring-1 ring-white/20 shadow-lg"
     >
       <div className="flex flex-col gap-0.5">
         <span className={`w-4 h-0.5 bg-white transition-all duration-300 ${showX ? 'rotate-45 translate-y-1' : ''}`}></span>
@@ -218,7 +218,7 @@ const Navbar: React.FC = () => {
       <div
         ref={menuRef}
         suppressHydrationWarning
-        className="fixed inset-0 z-[9999]"
+        className="fixed inset-0 z-100"
         style={{ display: 'none' }}
       >
         {/* Full Screen Overlay */}

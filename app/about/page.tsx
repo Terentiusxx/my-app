@@ -22,10 +22,15 @@ export default function AboutPage() {
   const experienceRef = useRef<HTMLDivElement>(null);
   const experiencePinRef = useRef<HTMLDivElement>(null);
   const experienceTitleRef = useRef<HTMLDivElement>(null);
+  const additionalExperienceRef = useRef<HTMLDivElement>(null);
+  const additionalStoryRef = useRef<HTMLDivElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
   const [showAllExperience, setShowAllExperience] = React.useState(false);
+  const [showAllStory, setShowAllStory] = React.useState(false);
 
   useEffect(() => {
     const lenis = new Lenis();
+    lenisRef.current = lenis;
     
     lenis.on("scroll", ScrollTrigger.update);
     
@@ -93,9 +98,80 @@ export default function AboutPage() {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
+
+  // Animate additional experience items when they become visible and refresh ScrollTrigger
+  useEffect(() => {
+    if (showAllExperience && additionalExperienceRef.current) {
+      let refreshInterval: NodeJS.Timeout;
+      
+      gsap.fromTo(additionalExperienceRef.current,
+        { y: '30vh', opacity: 0 },
+        {
+          y: '0vh',
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          onStart: () => {
+            // Gradually refresh during animation for smooth transition
+            refreshInterval = setInterval(() => {
+              ScrollTrigger.refresh();
+            }, 100);
+          },
+          onComplete: () => {
+            // Clear interval and do final refresh
+            clearInterval(refreshInterval);
+            gsap.delayedCall(0.2, () => {
+              ScrollTrigger.refresh();
+            });
+          }
+        }
+      );
+    } else if (!showAllExperience) {
+      // Smoothly refresh when content collapses
+      gsap.delayedCall(0.3, () => {
+        ScrollTrigger.refresh();
+      });
+    }
+  }, [showAllExperience]);
+
+  // Animate additional story paragraphs when they become visible and refresh ScrollTrigger
+  useEffect(() => {
+    if (showAllStory && additionalStoryRef.current) {
+      let refreshInterval: NodeJS.Timeout;
+      
+      gsap.fromTo(additionalStoryRef.current,
+        { y: '30vh', opacity: 0 },
+        {
+          y: '0vh',
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          onStart: () => {
+            // Gradually refresh during animation for smooth transition
+            refreshInterval = setInterval(() => {
+              ScrollTrigger.refresh();
+            }, 100);
+          },
+          onComplete: () => {
+            // Clear interval and do final refresh
+            clearInterval(refreshInterval);
+            gsap.delayedCall(0.2, () => {
+              ScrollTrigger.refresh();
+            });
+          }
+        }
+      );
+    } else if (!showAllStory) {
+      // Smoothly refresh when content collapses
+      gsap.delayedCall(0.3, () => {
+        ScrollTrigger.refresh();
+      });
+    }
+  }, [showAllStory]);
 
   return (
     <>
@@ -160,9 +236,7 @@ export default function AboutPage() {
                 className="lg:text-right"
               >
                 <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-2xl lg:ml-auto">
-                  I am a lecturer, statistician, and researcher with a deep belief in clarity, care, and rigour. 
-                  My work is driven by a commitment to ethical teaching, thoughtful analysis, and meaningful contributions 
-                  to both academic scholarship and public understanding.
+                  Lecturer, research consultant, statistician, machine learning and AI expert, and mentor. I believe nothing about me is self made. I owe God everything. My journey has been shaped by curiosity, resilience, and a deep love for numbers, people, and meaningful impact.
                 </p>
               </motion.div>
             </div>
@@ -198,7 +272,7 @@ export default function AboutPage() {
             {/* Quote text */}
             <Copy>
               <blockquote className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-relaxed">
-                I am a lecturer, statistician, and researcher with a deep belief in clarity, care, and rigour. My work sits at the intersection of education, data, and real-world impact.
+                I have always loved simplifying complex ideas and helping others see what they once thought was difficult.
               </blockquote>
             </Copy>
           </div>
@@ -217,7 +291,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg shadow-lg">
+              <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg shadow-lg">
                 <Image
                   src="/aboutme.jpeg"
                   alt="Dr. Jason Anquandah"
@@ -241,38 +315,53 @@ export default function AboutPage() {
               
               <div className="space-y-6 text-base md:text-lg leading-relaxed text-gray-700">
                 <p>
-                  I've always been drawn to numbers—not as abstractions, but as stories waiting to be told. 
-                  As a child growing up in Ghana, I found patterns everywhere: in games, in nature, in the way 
-                  people made decisions. That curiosity led me to mathematics and statistics, disciplines that 
-                  offered a language for understanding complexity.
+                  From a very young age, I had a natural love for numbers. One story that stands out from my childhood is that I never attended preschool, so my older sister would come home and teach me what she had learned in school. Between the ages of two and three, she taught me the times tables, and to everyone's surprise, I picked them up remarkably quickly. One memorable evening, eager to show off my new skills, I decided to write out the 2 times table using a nail on the side of my father's grey Toyota Carina. I will leave the rest to your imagination.
                 </p>
                 
                 <p>
-                  What began as a fascination with logic and problem-solving evolved into something deeper: 
-                  a desire to use data to understand people, to improve systems, and to teach others how to do the same. 
-                  The question wasn't just what the data said—it was why it mattered.
+                 My family supported my love for mathematics, and I always had a natural ability to break down big concepts and simplify them. When I eventually started school, I was promoted and made the assistant class teacher because of my strength in mathematics. Words were not my favourite thing to play with. That is a story for another time. 
                 </p>
                 
-                <p>
-                  My journey has taken me from Ghana to Tanzania to the UK, and across each transition, 
-                  one constant has remained: the classroom. Teaching came naturally. Breaking down complex ideas, 
-                  watching the moment of understanding dawn on someone's face—that became as rewarding as 
-                  solving the problems themselves.
-                </p>
-                
-                <p>
-                  I realized the real power of knowledge isn't just in having it, but in sharing it in ways 
-                  that inspire others to think critically and independently. Whether teaching undergraduate 
-                  statistics, supervising doctoral candidates, or running workshops for professionals, I've learned 
-                  that great teaching isn't about what you know—it's about how you help others discover what 
-                  they're capable of.
-                </p>
-                
-                <p>
-                  Today, my work sits at the intersection of education, research, and real-world impact. 
-                  I'm driven by a commitment to ethical teaching, thoughtful analysis, and meaningful contributions 
-                  to both academic scholarship and public understanding.
-                </p>
+                {/* Additional story paragraphs - conditionally rendered */}
+                {showAllStory && (
+                  <div ref={additionalStoryRef} className="space-y-6">
+                    <p>
+                      In Ghana, there is a gap year between junior high school and senior high school. During this time, I ran my first business tutoring children in mathematics. It was both a lucrative and meaningful experience. I had several students, some of whom came to my home, while for others I provided home tutoring services.
+                    </p>
+                    
+                    <p>
+                      I went on to attend some of the most prestigious schools in Ghana. At Wesley Girls’ High School I studied business, and later pursued Actuarial Science at Kwame Nkrumah University of Science and Technology. I served as class representative for four consecutive years and received the Best Class Representative award three times. After completing my degree, I became a teaching assistant and was honoured with the Best Statistics Teaching Assistant award.
+                    </p>
+                    
+                    <p>
+                      My journey then took me across Africa and beyond, from the African Institute for Mathematical Sciences in Tanzania to a PhD in Statistics at the University of Leeds. Each stage shaped who I am today. It built my voice, my empathy, my leadership, and my commitment to excellence.
+                    </p>
+                  </div>
+                )}
+
+                {/* View More Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center pt-4"
+                >
+                  <button
+                    onClick={() => setShowAllStory(!showAllStory)}
+                    className="flex items-center gap-3 text-gray-900 hover:text-red-500 transition-colors duration-300 text-sm"
+                  >
+                    {showAllStory ? 'show less' : 'view more'}
+                    <svg 
+                      className={`w-4 h-4 transition-transform duration-300 ${showAllStory ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </motion.div>
               </div>
             </motion.div>
           </div>
@@ -331,8 +420,8 @@ export default function AboutPage() {
           {/* Timeline Container */}
           <div className="relative w-full">
             {/* Vertical Line - centered on desktop, left on mobile */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-black via-gray-400 to-transparent h-full" />
-            <div className="md:hidden absolute left-0 w-1 bg-gradient-to-b from-black via-gray-400 to-transparent h-full" />
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-linear-to-b from-black via-gray-400 to-transparent h-full" />
+            <div className="md:hidden absolute left-0 w-1 bg-linear-to-b from-black via-gray-400 to-transparent h-full" />
 
             {/* Education Items */}
             <div className="space-y-12 md:space-y-16 relative">
@@ -371,7 +460,7 @@ export default function AboutPage() {
                 >
                   <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 ml-12 md:ml-0 overflow-hidden">
                     <div className="flex gap-4">
-                      <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
                           src="/aboutme.jpeg"
                           alt="University of Leeds"
@@ -431,7 +520,7 @@ export default function AboutPage() {
                 >
                   <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 ml-12 md:ml-0 overflow-hidden">
                     <div className="flex gap-4">
-                      <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
                           src="/aboutme.jpeg"
                           alt="University of Ghana"
@@ -488,7 +577,7 @@ export default function AboutPage() {
                 >
                   <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 ml-12 md:ml-0 overflow-hidden">
                     <div className="flex gap-4">
-                      <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
                           src="/aboutme.jpeg"
                           alt="AIMS Tanzania"
@@ -548,7 +637,7 @@ export default function AboutPage() {
                 >
                   <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-lg hover:shadow-xl hover:border-gray-400 transition-all duration-300 ml-12 md:ml-0 overflow-hidden">
                     <div className="flex gap-4">
-                      <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
                           src="/aboutme.jpeg"
                           alt="KNUST Ghana"
@@ -617,7 +706,7 @@ export default function AboutPage() {
                     Design and develop teaching content aligned with industry and academic best practice.
                   </p>
                 </div>
-                <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                <div className="text-gray-500 text-sm md:text-right shrink-0">
                   <div>Sept 2022 - Present</div>
                 </div>
               </div>
@@ -640,7 +729,7 @@ export default function AboutPage() {
                     Roblox-based interventions, and Sustainable Development Goals in Africa.
                   </p>
                 </div>
-                <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                <div className="text-gray-500 text-sm md:text-right shrink-0">
                   <div>Sept 2023 - Present</div>
                 </div>
               </div>
@@ -656,46 +745,22 @@ export default function AboutPage() {
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Study Group – Cardiff University</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Study Group - Cardiff University</h3>
                   <h4 className="text-lg text-gray-700 font-medium mb-3">Module Leader and Tutor</h4>
                   <p className="text-gray-600 leading-relaxed">
                     Lead and develop modules in information analysis, statistics, information technology, and marketing management. 
                     Teach international Year 1 and pre-master's students.
                   </p>
                 </div>
-                <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                <div className="text-gray-500 text-sm md:text-right shrink-0">
                   <div>Dec 2022 - Present</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* View More Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="flex justify-center pt-4"
-            >
-              <button
-                onClick={() => setShowAllExperience(!showAllExperience)}
-                className="flex items-center gap-3 text-gray-900 hover:text-red-500 transition-colors duration-300 text-sm"
-              >
-                {showAllExperience ? 'show less experience' : 'view more experience'}
-                <svg 
-                  className={`w-4 h-4 transition-transform duration-300 ${showAllExperience ? 'rotate-180' : ''}`}
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </motion.div>
-
             {/* Additional positions - conditionally rendered */}
             {showAllExperience && (
-              <>
+              <div ref={additionalExperienceRef}>
                 {/* Position 4 - LSE */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -712,7 +777,7 @@ export default function AboutPage() {
                         Teach Statistical Methods for Marketing Research and Machine Learning. Facilitate group discussions and asynchronous learning activities.
                       </p>
                     </div>
-                    <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                    <div className="text-gray-500 text-sm md:text-right shrink-0">
                       <div>May 2023 - Present</div>
                     </div>
                   </div>
@@ -735,7 +800,7 @@ export default function AboutPage() {
                         Supported students through one-on-one academic guidance and forum engagement.
                       </p>
                     </div>
-                    <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                    <div className="text-gray-500 text-sm md:text-right shrink-0">
                       <div>Aug 2022 - Aug 2024</div>
                     </div>
                   </div>
@@ -758,7 +823,7 @@ export default function AboutPage() {
                         Supervised MSc students in Statistics and Mathematics.
                       </p>
                     </div>
-                    <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                    <div className="text-gray-500 text-sm md:text-right shrink-0">
                       <div>Jan 2021 - Jan 2022</div>
                     </div>
                   </div>
@@ -781,7 +846,7 @@ export default function AboutPage() {
                         Built and managed complex quantitative datasets. Produced policy briefs and peer-reviewed publications.
                       </p>
                     </div>
-                    <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                    <div className="text-gray-500 text-sm md:text-right shrink-0">
                       <div>Jan 2020 - Jan 2021</div>
                     </div>
                   </div>
@@ -793,7 +858,7 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
-                  className="pb-8"
+                  className="border-b border-gray-200 pb-8"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div className="flex-1">
@@ -804,13 +869,37 @@ export default function AboutPage() {
                         Supported exam design, assessment moderation, and student mentoring.
                       </p>
                     </div>
-                    <div className="text-gray-500 text-sm md:text-right flex-shrink-0">
+                    <div className="text-gray-500 text-sm md:text-right shrink-0">
                       <div>Jan 2017 - Jun 2020</div>
                     </div>
                   </div>
                 </motion.div>
-              </>
+              </div>
             )}
+
+            {/* View More Button - Always at the bottom */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="flex justify-center pt-4"
+            >
+              <button
+                onClick={() => setShowAllExperience(!showAllExperience)}
+                className="flex items-center gap-3 text-gray-900 hover:text-red-500 transition-colors duration-300 text-sm"
+              >
+                {showAllExperience ? 'show less experience' : 'view more experience'}
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-300 ${showAllExperience ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </motion.div>
             </div>
           </div>
         </div>
@@ -873,7 +962,7 @@ export default function AboutPage() {
       </section>
 
       {/* Projects - Carousel Style */}
-      <section className="py-20 md:py-32 px-8 md:px-16 lg:px-24 bg-gradient-to-br from-gray-50 to-white">
+      <section className="py-20 md:py-32 px-8 md:px-16 lg:px-24 bg-linear-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -902,10 +991,10 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="group min-w-[400px] bg-white border-2 border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl snap-start"
+                className="group min-w-100 bg-white border-2 border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl snap-start"
               >
                 {/* Project Logo/Image */}
-                <div className="relative h-64 bg-gradient-to-br from-red-50 to-gray-50 flex items-center justify-center p-12">
+                <div className="relative h-64 bg-linear-to-br from-red-50 to-gray-50 flex items-center justify-center p-12">
                   <Image 
                     src="/privatelearn.png" 
                     alt="PrivateLearn" 
@@ -940,9 +1029,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="min-w-[400px] bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
+                className="min-w-100px bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
               >
-                <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
+                <div className="relative h-64 bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
                   <div className="text-gray-300 text-6xl">+</div>
                 </div>
                 <div className="p-8">
@@ -958,9 +1047,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="min-w-[400px] bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
+                className="min-w-100 bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
               >
-                <div className="relative h-64 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
+                <div className="relative h-64 bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
                   <div className="text-gray-300 text-6xl">+</div>
                 </div>
                 <div className="p-8">
@@ -1050,7 +1139,7 @@ export default function AboutPage() {
               className="grid grid-cols-2 gap-4"
             >
               <div className="space-y-4">
-                <div className="relative h-[200px] rounded-lg overflow-hidden group">
+                <div className="relative h-50 rounded-lg overflow-hidden group">
                   <Image
                     src="/aboutme.jpeg"
                     alt="Salsa dancing"
@@ -1058,7 +1147,7 @@ export default function AboutPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="relative h-[280px] rounded-lg overflow-hidden group">
+                <div className="relative h-70 rounded-lg overflow-hidden group">
                   <Image
                     src="/aboutme.jpeg"
                     alt="Cooking"
@@ -1068,7 +1157,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="space-y-4 pt-12">
-                <div className="relative h-[280px] rounded-lg overflow-hidden group">
+                <div className="relative h-70 rounded-lg overflow-hidden group">
                   <Image
                     src="/aboutme.jpeg"
                     alt="Travel"
@@ -1076,7 +1165,7 @@ export default function AboutPage() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="relative h-[200px] rounded-lg overflow-hidden group">
+                <div className="relative h-70 rounded-lg overflow-hidden group">
                   <Image
                     src="/aboutme.jpeg"
                     alt="Gardening"
