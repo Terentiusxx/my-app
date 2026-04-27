@@ -12,31 +12,37 @@ import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
   const currentSEO = SEO.find((item) => item.page === "contact");
-  
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    organization: "",
-    reason: "",
-    message: "",
-    consent: false,
-  });
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-    setFormData((prev) => ({ 
-      ...prev, 
-      [name]: type === 'checkbox' ? checked : value 
-    }));
-  };
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setLoading(true)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement form submission logic
-    console.log("Form submitted:", formData);
-  };
+    const fd = new FormData(e.currentTarget)
 
+    const payload = {
+      name: fd.get('name'),
+      email: fd.get('email'),
+      organisation: fd.get('organisation'),
+      reason: fd.get('reason'),
+      message: fd.get('message'),
+      consent: fd.get('consent'),
+    }
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    setLoading(false)
+
+    if (res.ok) {
+      setSuccess(true)
+      e.currentTarget.reset()
+    }
+  }
   return (
     <>
       <Head>
@@ -60,7 +66,7 @@ export default function ContactPage() {
               </Copy>
 
               <motion.div 
-                className="relative w-full aspect-[4/3] rounded-lg overflow-hidden"
+                className="relative w-full aspect-4/3 rounded-lg overflow-hidden"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -93,8 +99,6 @@ export default function ContactPage() {
                       type="text"
                       id="name"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
                       required
                       className="w-full border-0 border-b border-gray-300 pb-3 focus:border-gray-900 focus:outline-none text-gray-400 placeholder-gray-300 transition-colors"
                       placeholder="Your full name"
@@ -110,25 +114,21 @@ export default function ContactPage() {
                       type="email"
                       id="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
                       className="w-full border-0 border-b border-gray-300 pb-3 focus:border-gray-900 focus:outline-none text-gray-400 placeholder-gray-300 transition-colors"
                       placeholder="your.email@example.com"
                     />
                   </div>
 
-                  {/* Organization Field */}
+                  {/* Organisation Field */}
                   <div>
-                    <label htmlFor="organization" className="block text-sm tracking-widest mb-3">
+                    <label htmlFor="organisation" className="block text-sm tracking-widest mb-3">
                       ORGANISATION OR INSTITUTION: <span className="text-gray-400 text-xs">(OPTIONAL)</span>
                     </label>
                     <input
                       type="text"
-                      id="organization"
-                      name="organization"
-                      value={formData.organization}
-                      onChange={handleChange}
+                      id="organisation"
+                      name="organisation"
                       className="w-full border-0 border-b border-gray-300 pb-3 focus:border-gray-900 focus:outline-none text-gray-400 placeholder-gray-300 transition-colors"
                       placeholder="e.g., Cardiff University"
                     />
@@ -142,8 +142,6 @@ export default function ContactPage() {
                     <select
                       id="reason"
                       name="reason"
-                      value={formData.reason}
-                      onChange={handleChange}
                       required
                       className="w-full border-0 border-b border-gray-300 pb-3 focus:border-gray-900 focus:outline-none text-gray-400 appearance-none bg-white cursor-pointer transition-colors"
                     >
@@ -165,8 +163,6 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       name="message"
-                      value={formData.message}
-                      onChange={handleChange}
                       required
                       rows={6}
                       className="w-full border border-gray-300 rounded-sm p-3 focus:border-gray-900 focus:outline-none text-gray-400 placeholder-gray-300 transition-colors resize-none"
@@ -180,14 +176,20 @@ export default function ContactPage() {
                       type="checkbox"
                       id="consent"
                       name="consent"
-                      checked={formData.consent}
-                      onChange={handleChange}
+                      required
                       className="mt-1 mr-3 w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900"
                     />
                     <label htmlFor="consent" className="text-sm text-gray-600 leading-relaxed">
-                      I understand that responses may take a few working days.
+                      I understand that responses may take a few working days. <span className="text-gray-400 text-xs">(REQUIRED)</span>
                     </label>
                   </div>
+
+                  {/* Success Message */}
+                  {success && (
+                    <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">
+                      ✓ Message sent successfully! We'll get back to you soon.
+                    </div>
+                  )}
 
                   {/* Submit Button */}
                   <div className="pt-8">
@@ -195,9 +197,10 @@ export default function ContactPage() {
                       type="submit"
                       variant="outline"
                       size="lg"
-                      className="px-12 py-4 rounded-full border-2 border-gray-900 text-gray-900 hover:border-red-600 hover:text-red-600 hover:bg-transparent text-sm tracking-widest"
+                      disabled={loading}
+                      className="px-12 py-4 rounded-full border-2 border-gray-900 text-gray-900 hover:border-red-600 hover:text-red-600 hover:bg-transparent text-sm tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      SEND MESSAGE
+                      {loading ? 'SENDING...' : 'SEND MESSAGE'}
                     </Button>
                   </div>
                 </form>

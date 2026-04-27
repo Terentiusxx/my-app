@@ -74,12 +74,24 @@ export default function Hero() {
                   Dr. Jason<br />Anquandah
                 </h1>
                 <p className="text-white/90 text-base md:text-lg leading-relaxed mb-12">
-                  If you are looking for boring, I am definitely not your girl. If you want excellence with energy, let us connect. Book me and let us get it done while having a good time doing it!
+                  Lecturer, data scientist, and Co-CEO of{" "}
+                <a
+                  href="https://www.privatelearn.academy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-semibold hover:underline"
+                >
+                  <span className="text-white font-semibold">PrivateLearn Academy </span>
+                </a>
+                a digital learning platform built to expand access to practical, flexible education. If you want excellence with energy, let us connect.
                 </p>
                 {/* Socials - below description */}
                 <div className="flex gap-6">
                   <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
                     <FaLinkedin className="text-white/70 hover:text-white hover:scale-110 transition-transform duration-200 text-2xl" />
+                  </a>
+                  <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
+                    <FaInstagram className="text-white/70 hover:text-white hover:scale-110 transition-transform duration-200 text-2xl" />
                   </a>
                   <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="text-white/70 hover:text-white hover:scale-110 transition-transform duration-200 text-2xl" />

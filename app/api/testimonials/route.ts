@@ -46,14 +46,14 @@ export async function POST(request:Request) {
     }
     try {
     const body = await request.json()
-    const parsed = CreateTestimonialSchema.safeParse(body)
+    const parsed = z.array(CreateTestimonialSchema).safeParse(body)
     if (!parsed.success) {
         return NextResponse.json(
             {error: "Invalid input"},
             {status: 400}
         );
     }
-    const created = await prisma.testimonial.create(
+    const created = await prisma.testimonial.createMany(
             {data: parsed.data}
     );
     return NextResponse.json(created, {status: 201})

@@ -293,7 +293,7 @@ export default function AboutPage() {
             >
               <div className="relative aspect-3/4 w-full overflow-hidden rounded-lg shadow-lg">
                 <Image
-                  src="/aboutme.jpeg"
+                  src="/story.jpg"
                   alt="Dr. Jason Anquandah"
                   fill
                   className="object-cover"
@@ -462,7 +462,7 @@ export default function AboutPage() {
                     <div className="flex gap-4">
                       <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
-                          src="/aboutme.jpeg"
+                          src="/leeds_uni.jpeg"
                           alt="University of Leeds"
                           fill
                           className="object-cover"
@@ -522,8 +522,8 @@ export default function AboutPage() {
                     <div className="flex gap-4">
                       <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
-                          src="/aboutme.jpeg"
-                          alt="University of Ghana"
+                          src="/Salaam_uni.jpg"
+                          alt="Dar es Salaam"
                           fill
                           className="object-cover"
                         />
@@ -579,7 +579,7 @@ export default function AboutPage() {
                     <div className="flex gap-4">
                       <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
-                          src="/aboutme.jpeg"
+                          src="/AimsT.png"
                           alt="AIMS Tanzania"
                           fill
                           className="object-cover"
@@ -639,7 +639,7 @@ export default function AboutPage() {
                     <div className="flex gap-4">
                       <div className="relative w-20 h-20 rounded-lg overflow-hidden shrink-0">
                         <Image
-                          src="/aboutme.jpeg"
+                          src="/knust.jpg"
                           alt="KNUST Ghana"
                           fill
                           className="object-cover"
@@ -707,7 +707,7 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="text-gray-500 text-sm md:text-right shrink-0">
-                  <div>Sept 2022 - Present</div>
+                  <div>Sept C - Present</div>
                 </div>
               </div>
             </motion.div>
@@ -940,17 +940,18 @@ export default function AboutPage() {
                 How I<br />Teach
               </h2>
               <Copy>
-                <div className="space-y-8 text-base md:text-lg leading-relaxed text-gray-300">
+                <div className=" text-base md:text-lg leading-relaxed text-gray-300">
                   <p className="text-white">
-                    I believe learning happens best when students feel seen, challenged, and supported. 
-                    My approach is rooted in clarity, patience, and a genuine respect for where each learner is starting from.
+                    I am deeply passionate about education and helping others, whether it is offering a listening ear, lending a hand, or mentoring someone along their journey. Teaching for me goes beyond content delivery. It is about creating spaces where people feel seen, supported, and capable. I strive to nurture confidence, encourage curiosity, and guide students to think critically while believing in their own potential.
                   </p>
                   
                   <div className="pt-10">
                     <Link href="/testimonials">
-                      <Button size="lg" className="group">
+                      <Button 
+                        variant="outline" 
+                        className="rounded-full border-2 border-white text-white bg-transparent hover:bg-transparent hover:border-red-600 hover:text-red-600"
+                      >
                         Read Student Testimonials
-                        <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                       </Button>
                     </Link>
                   </div>
@@ -961,124 +962,102 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Projects - Carousel Style */}
-      <section className="py-20 md:py-32 px-8 md:px-16 lg:px-24 bg-linear-to-br from-gray-50 to-white">
+      {/* PrivateLearn - Featured Platform Section */}
+      <section className="py-20 md:py-32 px-8 md:px-16 lg:px-24 bg-white">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <span className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-8 block">
-              Projects
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
-              Applied Work
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mb-12">
-              Building tools and platforms that extend learning beyond traditional settings.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-          {/* Horizontal Scrolling Projects */}
-          <div className="relative mb-12">
-            <div className="flex gap-8 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory">
-              {/* PrivateLearn Project Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="group min-w-100 bg-white border-2 border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl snap-start"
-              >
-                {/* Project Logo/Image */}
-                <div className="relative h-64 bg-linear-to-br from-red-50 to-gray-50 flex items-center justify-center p-12">
-                  <Image 
-                    src="/privatelearn.png" 
-                    alt="PrivateLearn" 
-                    width={300}
-                    height={200}
-                    className="object-contain" 
-                  />
-                </div>
-                
-                {/* Project Content */}
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold text-gray-900 transition-colors mb-4">
-                    PrivateLearn
-                  </h3>
-                  <Copy>
-                    <p className="text-gray-700 leading-relaxed mb-6 text-base">
-                      A digital learning platform providing structured academic support, skills development, 
-                      and flexible learning tools for students, professionals, and lifelong learners across Ghana and beyond.
-                    </p>
-                  </Copy>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Education</span>
-                    <span className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">Platform</span>
-                    <span className="text-xs px-3 py-1 bg-gray-100 text-gray-700 rounded-full">2022</span>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Coming Soon Project Cards */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="min-w-100px bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
-              >
-                <div className="relative h-64 bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
-                  <div className="text-gray-300 text-6xl">+</div>
-                </div>
-                <div className="p-8">
-                  <div className="text-center py-12">
-                    <p className="text-gray-400 text-xl font-medium">More Projects</p>
-                    <p className="text-gray-500 text-sm mt-2">Coming Soon</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="min-w-100 bg-white border-2 border-gray-200 border-dashed rounded-2xl overflow-hidden snap-start"
-              >
-                <div className="relative h-64 bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center p-12">
-                  <div className="text-gray-300 text-6xl">+</div>
-                </div>
-                <div className="p-8">
-                  <div className="text-center py-12">
-                    <p className="text-gray-400 text-xl font-medium">More Projects</p>
-                    <p className="text-gray-500 text-sm mt-2">Coming Soon</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="rounded-full border-2 border-gray-900 text-gray-900 hover:border-red-600 hover:text-red-600 hover:bg-transparent group"
-              onClick={() => window.location.href = '/projects'}
+            {/* Left — Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
             >
-              View All Projects
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </Button>
-          </motion.div>
+              <span className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-6 block">
+                Platform Work
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+                PrivateLearn
+              </h2>
+              <p className="text-base text-gray-400 italic mb-8">
+                A platform designed to extend learning beyond traditional classrooms.
+              </p>
+              <Copy>
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-10">
+                  PrivateLearn is a digital learning platform providing structured academic support, skills development, and flexible learning tools for students, professionals, and lifelong learners across Ghana and beyond.
+                </p>
+              </Copy>
+              <div className="flex flex-wrap gap-2 mb-10">
+                <span className="text-xs px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">Co CEO and Co Creator of PrivateLearn Academy</span>
+              </div>
+              <a
+                href="https://www.privatelearn.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 border-b-2 border-gray-900 pb-0.5 hover:text-red-600 hover:border-red-600 transition-colors duration-300"
+              >
+                Visit Platform
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </motion.div>
+
+            {/* Right — Overlapping Screenshot Collage */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              viewport={{ once: true }}
+              className="relative flex items-center justify-center"
+            >
+              <a
+                href="https://www.privatelearn.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block w-full"
+                style={{ height: '480px' }}
+              >
+                {/* Back screenshot — offset top-right, slight counter-clockwise tilt */}
+                <motion.div
+                  whileHover={{ scale: 1.03, rotate: -1 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                  className="absolute top-0 right-0 w-[75%] rounded-2xl overflow-hidden shadow-2xl border border-gray-100 rotate-2 z-10"
+                >
+                  <Image
+                    src="/screenshot2.png"
+                    alt="PrivateLearn platform screenshot"
+                    width={600}
+                    height={420}
+                    className="object-cover w-full h-auto"
+                  />
+                </motion.div>
+
+                {/* Front screenshot — offset bottom-left, slight clockwise tilt */}
+                <motion.div
+                  whileHover={{ scale: 1.04, rotate: 1 }}
+                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+                  className="absolute bottom-0 left-0 w-[75%] rounded-2xl overflow-hidden shadow-2xl border border-gray-100 -rotate-2 z-20"
+                >
+                  <Image
+                    src="/screenshot1.png"
+                    alt="PrivateLearn platform interface"
+                    width={600}
+                    height={420}
+                    className="object-cover w-full h-auto"
+                  />
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-2xl flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-sm font-medium bg-black/60 px-4 py-2 rounded-full">
+                      Visit PrivateLearn →
+                    </span>
+                  </div>
+                </motion.div>
+              </a>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -1108,26 +1087,20 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <Copy>
-                <div className="space-y-6 text-base md:text-lg leading-relaxed text-gray-300">
-                  <p className="text-white text-xl">
-                    Outside of teaching and research, I find balance through movement, creativity, and connection.
-                  </p>
-                  <p>
-                    I love <span className="text-red-600 font-semibold">salsa dancing</span>—there's something about the rhythm, the improvisation, the partnership 
-                    that mirrors what I value in good collaboration.
-                  </p>
-                  <p>
-                    I also spend time in the kitchen, experimenting with recipes, and in the garden, where patience 
-                    and care yield their own kind of growth. Travel has shaped how I see the world, and I'm grateful 
-                    for the communities I've been part of across continents.
-                  </p>
-                  <p className="text-white italic pt-4">
-                    These aren't distractions from the work—they're reminders that balance, joy, and care are 
-                    essential to doing meaningful work sustainably.
-                  </p>
-                </div>
-              </Copy>
+              <div className="md:text-lg text-white text-xl leading-relaxed">
+                <p className="mb-8">
+                  Outside of teaching and research, I find balance through movement, creativity, and connection.
+                </p>
+                <p className="mb-8">
+                  I love <span className="text-red-600 font-semibold">salsa dancing.</span> There is something magical about the rhythm and the connection it brings. Cooking is another passion of mine. I find it therapeutic and a beautiful way to express love, culture, and creativity.
+                </p>
+                <p className="mb-8">
+                  Travelling opens my mind and heart, allowing me to experience different ways of life and build lasting memories. Gardening grounds me. It is a quiet space where I reconnect with nature and find peace.
+                </p>
+                <p>
+                  Above all, I cherish spending quality time with people I genuinely care about. Life is richer when shared with others.
+                </p>
+              </div>
             </motion.div>
 
             {/* Image Gallery */}
@@ -1139,36 +1112,36 @@ export default function AboutPage() {
               className="grid grid-cols-2 gap-4"
             >
               <div className="space-y-4">
-                <div className="relative h-50 rounded-lg overflow-hidden group">
+                <div className="relative h-80 rounded-lg overflow-hidden group">
                   <Image
-                    src="/aboutme.jpeg"
-                    alt="Salsa dancing"
+                    src="/Fun2.jpg"
+                    alt="Fun Image"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="relative h-70 rounded-lg overflow-hidden group">
+                <div className="relative h-96 rounded-lg overflow-hidden group">
                   <Image
-                    src="/aboutme.jpeg"
-                    alt="Cooking"
+                    src="/Fun1.jpg"
+                    alt="Fun Image"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
               </div>
-              <div className="space-y-4 pt-12">
-                <div className="relative h-70 rounded-lg overflow-hidden group">
+              <div className="space-y-4 pt-8">
+                <div className="relative h-96 rounded-lg overflow-hidden group">
                   <Image
-                    src="/aboutme.jpeg"
-                    alt="Travel"
+                    src="/Fun3.jpg"
+                    alt="Fun Image"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="relative h-70 rounded-lg overflow-hidden group">
+                <div className="relative h-80 rounded-lg overflow-hidden group">
                   <Image
-                    src="/aboutme.jpeg"
-                    alt="Gardening"
+                    src="/Fun4.jpg"
+                    alt="Fun Image"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
