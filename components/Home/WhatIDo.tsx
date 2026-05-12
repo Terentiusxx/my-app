@@ -194,7 +194,7 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                   onViewportEnter={() => {
-                    const anim = document.getElementById('brush-anim-whatido') as any;
+                    const anim = document.getElementById('brush-anim-whatido') as SVGAnimateElement | null;
                     if (anim) anim.beginElement();
                   }}
                   viewport={{ once: true }}

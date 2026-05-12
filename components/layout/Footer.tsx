@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -20,21 +21,21 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4">Pages</p>
             <div className="flex flex-col gap-2 items-center">
-              <a href="/" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+              <Link href="/" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
                 Home
-              </a>
-              <a href="/about" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+              </Link>
+              <Link href="/about" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
                 About
-              </a>
-              <a href="/media" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+              </Link>
+              <Link href="/media" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
                 Media
-              </a>
-              <a href="/testimonials" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+              </Link>
+              <Link href="/testimonials" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
                 Testimonials
-              </a>
-              <a href="/contact" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
+              </Link>
+              <Link href="/contact" className="text-gray-400 hover:text-red-500 transition-colors text-sm">
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -45,7 +45,7 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
     const originalError = console.error
     const originalWarn = console.warn
     
-    console.error = (...args: any[]) => {
+    console.error = (...args: unknown[]) => {
       const message = typeof args[0] === 'string' ? args[0] : ''
       // Suppress MuxPlayer, HLS, and media-related errors
       if (
@@ -59,15 +59,15 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
       ) {
         return
       }
-      originalError.apply(console, args)
+      originalError.apply(console, args as Parameters<typeof console.error>)
     }
 
-    console.warn = (...args: any[]) => {
+    console.warn = (...args: unknown[]) => {
       const message = typeof args[0] === 'string' ? args[0] : ''
       if (message.includes('mux-player') || message.includes('HLS')) {
         return
       }
-      originalWarn.apply(console, args)
+      originalWarn.apply(console, args as Parameters<typeof console.warn>)
     }
 
     return () => {

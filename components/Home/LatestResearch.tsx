@@ -56,9 +56,7 @@ const articles: Article[] = [
   },
 ];
 
-interface LatestResearchProps {}
-
-const LatestResearch: React.FC<LatestResearchProps> = () => {
+const LatestResearch: React.FC = () => {
   return (
     <section className="w-full px-8 md:px-16 py-20 bg-white">
       {/* Header */}

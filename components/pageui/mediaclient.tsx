@@ -34,17 +34,18 @@ export default function MediaClient({ initialVideos }: MediaClientProps) {
   // Suppress MuxPlayer HLS errors in console
   React.useEffect(() => {
     const originalError = console.error;
-    console.error = (...args: any[]) => {
+    console.error = (...args: unknown[]) => {
       // Suppress MuxPlayer and HLS errors
+      const msg = typeof args[0] === 'string' ? args[0] : '';
       if (
-        args[0]?.includes?.('mux-player') ||
-        args[0]?.includes?.('MediaError') ||
-        args[0]?.includes?.('HLS') ||
-        args[0]?.includes?.('getErrorFromHlsErrorData')
+        msg.includes('mux-player') ||
+        msg.includes('MediaError') ||
+        msg.includes('HLS') ||
+        msg.includes('getErrorFromHlsErrorData')
       ) {
         return;
       }
-      originalError(...args);
+      originalError.apply(console, args as Parameters<typeof console.error>);
     };
 
     return () => {
