@@ -4,10 +4,10 @@ import React, { useState, useMemo } from "react";
 import Head from "next/head";
 import MuxPlayer from '@mux/mux-player-react';
 import PageHero from "@/components/layout/PageHero";
-import CallToAction from "@/components/layout/CallToAction";
 import Pagination from "@/components/layout/Pagination";
 import INFO from "@/src/data/user";
 import SEO from "@/src/data/seo";
+import GetInTouch from "../Home/GetInTouch";
 
 type Video = {
   title: string;
@@ -127,13 +127,8 @@ export default function MediaClient({ initialVideos }: MediaClientProps) {
             )}
           </div>
         </section>
-
-        <CallToAction
-          title="Want to Collaborate?"
-          description="Interested in creating educational content together or discussing ideas? Let's connect."
-          buttonText="Get in Touch"
-          buttonLink="/contact"
-        />
+        
+        <GetInTouch/>
       </div>
     </>
   );
