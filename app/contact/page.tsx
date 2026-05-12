@@ -88,7 +88,6 @@ export default function ContactPage() {
 
             {/* Right Column - Form */}
             <div>
-              <Copy animateOnScroll={false} delay={0.6}>
                 <form onSubmit={handleSubmit} className="space-y-8">
                   {/* Full Name Field */}
                   <div>
@@ -204,7 +203,6 @@ export default function ContactPage() {
                     </Button>
                   </div>
                 </form>
-              </Copy>
             </div>
           </div>
         </div>

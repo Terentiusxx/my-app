@@ -93,8 +93,16 @@ export default function Hero() {
                   <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="text-white/70 hover:text-white hover:scale-110 transition-transform duration-200 text-2xl" />
                   </a>
-                  <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
-                    <FaInstagram className="text-white/70 hover:text-white hover:scale-110 transition-transform duration-200 text-2xl" />
+                  <a
+                    href="https://www.privatelearn.academy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="/privatelearn-logo.png"
+                      alt="PrivateLearn Academy"
+                      className="h-8 w-auto opacity-70 hover:opacity-100 hover:scale-110 transition duration-200"
+                    />
                   </a>
                 </div>
               </div>

@@ -12,7 +12,7 @@ export default function GetInTouch() {
         </h2>
 
         <a 
-          href="mailto:your@email.com"
+          href="/contact"
           className="inline-flex items-center gap-4 text-2xl md:text-3xl text-white hover:text-red-500 transition-colors group"
         >
           Get in touch
