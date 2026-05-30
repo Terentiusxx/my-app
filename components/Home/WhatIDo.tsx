@@ -23,7 +23,7 @@ const services: Service[] = [
     category: 'Education',
     description:
       'I teach statistics, data science, and computational methods at undergraduate and postgraduate levels, focusing on clarity, critical thinking, and long-term understanding.',
-    image: '/teaching.png',
+    image: '/Teaching.png',
   },
   {
     title: 'Statistical & Data Analysis',
