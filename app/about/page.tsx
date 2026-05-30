@@ -18,7 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutPage() {
   const heroImageRef = useRef<HTMLDivElement>(null);
   const storyImageRef = useRef<HTMLDivElement>(null);
-  const workspaceRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const experiencePinRef = useRef<HTMLDivElement>(null);
   const experienceTitleRef = useRef<HTMLDivElement>(null);

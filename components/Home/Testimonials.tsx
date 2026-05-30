@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
+import Image from "next/image"; 
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,9 +68,11 @@ export default function Testimonials() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-          <img
-            src={'/class.jpg'}
+          <Image
+            src="/class.jpg"
             alt="Publications 3"
+            width={800}
+            height={400}
             className="w-full h-[400px] object-cover rounded-2xl"
           />
           <div className="grid grid-cols-[5%_90%_5%] gap-0">

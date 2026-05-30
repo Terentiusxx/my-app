@@ -35,7 +35,6 @@ const defaultItems: MediaItem[] = [
 
 const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const bgTransitionRef = useRef<HTMLDivElement>(null)
   const row2Ref = useRef<HTMLDivElement>(null)
   const row3Ref = useRef<HTMLDivElement>(null)
   const [videoErrors, setVideoErrors] = useState<Set<number>>(new Set())

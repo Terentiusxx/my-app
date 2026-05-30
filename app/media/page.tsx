@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import MediaClient from "../../components/pageui/mediaclient";
 import { Video } from "@/lib/types"
 import { api } from "@/lib/api"

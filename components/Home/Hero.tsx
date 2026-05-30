@@ -5,6 +5,7 @@ import Introduction from "@/components/Home/Intro";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -98,11 +99,13 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
-                      src="/privatelearn-logo.png"
-                      alt="PrivateLearn Academy"
-                      className="h-8 w-auto opacity-70 hover:opacity-100 hover:scale-110 transition duration-200"
-                    />
+                    <Image
+                    src="/privatelearn-logo.png"
+                    alt="PrivateLearn Academy"
+                    width={120}
+                    height={32}
+                    className="h-8 w-auto opacity-70 hover:opacity-100 hover:scale-110 transition duration-200"
+                  />
                   </a>
                 </div>
               </div>

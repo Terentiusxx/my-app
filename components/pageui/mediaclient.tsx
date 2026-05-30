@@ -23,8 +23,7 @@ interface MediaClientProps {
 }
 
 export default function MediaClient({ initialVideos }: MediaClientProps) {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [searchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const videosPerPage = 6;
 

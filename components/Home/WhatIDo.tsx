@@ -67,9 +67,7 @@ type Props = {
 }
 
 const WhatIDo: React.FC<Props> = ({ className = '' }) => {
-    const logoRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
-  const bgTransitionRef = useRef<HTMLDivElement>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
