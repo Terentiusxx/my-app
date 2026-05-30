@@ -11,7 +11,7 @@ type Props = {
 
 const Quote: React.FC<Props> = ({ className = '' }) => {
   return (
-    <section className={`relative w-full min-h-screen flex items-center justify-center bg-white ${className}`}>
+    <section className={`relative w-full flex items-center justify-center bg-white ${className}`}>
       <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2">
           {/* Quote side */}
           <motion.div
@@ -19,7 +19,7 @@ const Quote: React.FC<Props> = ({ className = '' }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex items-center px-8 md:px-16 py-20"
+            className="flex items-center px-6 sm:px-8 md:px-16 py-14 sm:py-20"
           >
             <div className="relative">
               {/* Opening quote mark */}
@@ -29,7 +29,7 @@ const Quote: React.FC<Props> = ({ className = '' }) => {
               
               {/* Quote text */}
               <Copy>
-                <blockquote className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-relaxed">
+                <blockquote className="relative z-10 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-relaxed">
                   Data doesn't lie, but it doesn't speak for itself either. My job is to listen carefully, interpret honestly, and communicate clearly.
                 </blockquote>
               </Copy>
@@ -42,7 +42,7 @@ const Quote: React.FC<Props> = ({ className = '' }) => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative h-screen"
+            className="relative h-64 sm:h-96 md:h-screen"
           >
             <Image
               src="/quote.jpg"

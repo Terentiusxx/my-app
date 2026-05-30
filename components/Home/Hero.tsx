@@ -70,11 +70,11 @@ export default function Hero() {
               />
 
               {/* Dr., Name, and Description - left side */}
-              <div className="absolute top-48 left-12 z-10 max-w-xl">
-                <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold mb-8 uppercase leading-tight">
+              <div className="absolute top-24 sm:top-32 md:top-48 left-4 sm:left-8 md:left-12 z-10 max-w-[calc(100%-2rem)] md:max-w-xl">
+                <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-8 uppercase leading-tight">
                   Dr. Jason<br />Anquandah
                 </h1>
-                <p className="text-white/90 text-base md:text-lg leading-relaxed mb-12">
+                <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-12">
                   Lecturer, data scientist, and Co-CEO of{" "}
                 <a
                   href="https://www.privatelearn.academy/"
@@ -116,7 +116,7 @@ export default function Hero() {
         {/* Card 2: Introduction */}
         <div ref={introcard} className="card relative h-screen z-10">
           <div className="card-inner relative h-screen will-change-transform [transform-style:preserve-3d]">
-            <div className="h-full flex items-start justify-center px-8 md:px-16 pt-2">
+            <div className="h-full overflow-y-auto flex items-start justify-center px-4 sm:px-8 md:px-16 pt-2">
               <Introduction />
             </div>
           </div>)

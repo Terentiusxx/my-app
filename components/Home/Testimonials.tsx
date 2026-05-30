@@ -48,11 +48,11 @@ export default function Testimonials() {
   const next = () => setIndex((index + 1) % testimonials.length);
 
   return (
-    <section className="w-full px-6 md:px-9 lg:px-12 py-14 md:py-18 bg-black">
-      <div className="mb-10 md:mb-14">
-        <div className="pl-9">
+    <section className="w-full px-4 sm:px-6 md:px-9 lg:px-12 py-12 md:py-18 bg-black">
+      <div className="mb-8 md:mb-14">
+        <div className="pl-0 sm:pl-4 md:pl-9">
           <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">TESTIMONIALS</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">What Students are Saying</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">What Students are Saying</h2>
           <div className="flex items-end justify-between mt-6">
             <div>
               <p className="text-gray-400 text-sm max-w-xs">Real stories from real people showcasing authentic experiences</p>

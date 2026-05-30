@@ -173,10 +173,10 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
       </svg>
       
       {/* Content Section */}
-      <div className="relative z-10 px-8 md:px-16 pt-16 pb-0">
+      <div className="relative z-10 px-4 sm:px-8 md:px-16 pt-12 md:pt-16 pb-0">
         {/* Header */}
-        <div className="mb-16">
-            <div className='flex justify-between items-start mb-12'>
+        <div className="mb-10 md:mb-16">
+            <div className='flex flex-col gap-4 md:flex-row md:justify-between md:items-start mb-8 md:mb-12'>
                 <motion.p 
                   className="text-xs uppercase tracking-[0.3em] text-gray-500"
                   initial={{ opacity: 0, x: -50 }}
@@ -185,9 +185,9 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                 >
                   WHAT I DO
                 </motion.p>
-                <div className="flex-1 max-w-2xl ml-auto">
+                <div className="md:flex-1 md:max-w-2xl md:ml-auto">
                 <motion.h1 
-                  className="text-xl md:text-3xl lg:text-5xl font-serif mb-8 leading-tight"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-6 md:mb-8 leading-tight"
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -222,7 +222,7 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
         {/* Services Section */}
         <div className="mt-20">
           <motion.div 
-            className="flex justify-between items-center mb-12"
+            className="flex justify-between items-center mb-8 md:mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

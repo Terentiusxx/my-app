@@ -299,12 +299,12 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
       </div>
 
       {/* Content Section - Overlays the grid */}
-      <div className="relative z-10 px-8 md:px-16 min-h-screen flex items-start pt-20">
-        <div className="max-w-xs pt-15">
-          <h2 className="text-white text-2xl md:text-3xl font-bold mb-3 leading-tight">
+      <div className="relative z-10 px-4 sm:px-8 md:px-16 min-h-screen flex items-start pt-12 md:pt-20">
+        <div className="max-w-full md:max-w-[32rem] pt-8 md:pt-25 px-0 md:px-10">
+          <h2 className="text-white text-2xl sm:text-3xl md:text-5xl font-bold mb-3 leading-tight">
             Media & Content
           </h2>
-          <p className="text-white/80 text-sm md:text-base mb-6 leading-snug">
+          <p className="text-white/80 text-sm md:text-lg mb-6 leading-snug">
             Explore my latest LinkedIn video creations, keynotes, and insights. Combining expertise with authentic enthusiasm to deliver impactful content.
           </p>
           

@@ -15,7 +15,7 @@ export default function Intro() {
             <div className="relative mx-auto max-w-7xl gap-4 px-4 md:px-8 mb-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex justify-center items-start flex-col mb-5">
-                    <div className="images relative w-full aspect-square overflow-hidden">
+                    <div className="images relative w-full aspect-4/3 sm:aspect-square overflow-hidden">
                         <div className="absolute top-28 left-4 w-[50%] aspect-square hover:scale-105 transition-all ease duration-300">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.5, x: 100 }}

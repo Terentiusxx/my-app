@@ -7,13 +7,13 @@ export default function GetInTouch() {
       <div className="max-w-7xl mx-auto text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">CONTACT</p>
         
-        <h2 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-12 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-10 md:mb-12 leading-tight">
           Let's create something great together
         </h2>
 
         <a 
           href="/contact"
-          className="inline-flex items-center gap-4 text-2xl md:text-3xl text-white hover:text-red-500 transition-colors group"
+          className="inline-flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-3xl text-white hover:text-red-500 transition-colors group"
         >
           Get in touch
           <span className="text-red-600 group-hover:translate-x-2 transition-transform">→</span>
