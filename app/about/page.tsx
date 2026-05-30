@@ -991,7 +991,7 @@ export default function AboutPage() {
                 <span className="text-xs px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">Co CEO and Co Creator of PrivateLearn Academy</span>
               </div>
               <a
-                href="https://www.privatelearn.com"
+                href="https://www.privatelearn.academy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 border-b-2 border-gray-900 pb-0.5 hover:text-red-600 hover:border-red-600 transition-colors duration-300"
@@ -1012,7 +1012,7 @@ export default function AboutPage() {
               className="relative flex items-center justify-center"
             >
               <a
-                href="https://www.privatelearn.com"
+                href="https://www.privatelearn.academy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative block w-full"

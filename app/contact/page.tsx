@@ -19,7 +19,8 @@ export default function ContactPage() {
     e.preventDefault()
     setLoading(true)
 
-    const fd = new FormData(e.currentTarget)
+    const form = e.currentTarget
+    const fd = new FormData(form)
 
     const payload = {
       name: fd.get('name'),
@@ -40,7 +41,7 @@ export default function ContactPage() {
 
     if (res.ok) {
       setSuccess(true)
-      e.currentTarget.reset()
+      form.reset()
     }
   }
   return (
