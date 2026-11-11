@@ -78,7 +78,7 @@ export function TestimonialsGrid({
                 type="button"
                 key={num}
                 onClick={() => setPage(num)}
-                className={`w-7 h-7 rounded-full text-xs font-medium transition ${
+                className={`w-7 h-7 rounded-full text-xs font-medium transition cursor-pointer ${
                   page === num
                     ? "bg-gray-900 text-white"
                     : "text-gray-500 hover:bg-gray-100"

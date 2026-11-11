@@ -75,16 +75,16 @@ export default function Hero() {
                   Dr. Jason<br />Anquandah
                 </h1>
                 <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-12">
-                  Lecturer, data scientist, and Co-CEO of{" "}
+                  Co-founder of{" "}
                 <a
                   href="https://www.privatelearn.academy/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white font-semibold hover:underline"
                 >
-                  <span className="text-white font-semibold">PrivateLearn Academy </span>
+                  <span className="text-white font-semibold underline hover:text-blue-500">PrivateLearn </span>
                 </a>
-                a digital learning platform built to expand access to practical, flexible education. If you want excellence with energy, let us connect.
+                , data scientist, and lecturer with experience across some of the UK's top universities, including research at the University of Oxford. My passion for accessible education led me to co-found PrivateLearn, a platform connecting students with vetted tutors, interactive courses, and real-time progress tracking to make learning more practical and flexible.
                 </p>
                 {/* Socials - below description */}
                 <div className="flex gap-6">

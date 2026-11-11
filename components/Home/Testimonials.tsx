@@ -52,10 +52,10 @@ export default function Testimonials() {
       <div className="mb-8 md:mb-14">
         <div className="pl-0 sm:pl-4 md:pl-9">
           <p className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-8">TESTIMONIALS</p>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">What Students are Saying</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">What My Students are Saying</h2>
           <div className="flex items-end justify-between mt-6">
             <div>
-              <p className="text-gray-400 text-sm max-w-xs">Real stories from real people showcasing authentic experiences</p>
+              <p className="text-gray-400 text-sm max-w-xs">Real stories from my students, showcasing their experiences with me.</p>
             </div>
             <Button
               variant="link"

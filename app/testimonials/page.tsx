@@ -34,7 +34,7 @@ export default async function TestimonialsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/30 to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/30 flex flex-col justify-center items-center px-5">
           <Copy animateOnScroll={false} delay={0.3}>
-            <h1 className="text-5xl font-bold mb-5 font-playfair">What Students Say</h1>
+            <h1 className="text-5xl font-bold mb-5 font-playfair">What My Students Say</h1>
           </Copy>
           <Copy animateOnScroll={false} delay={0.5}>
             <p className="text-xl max-w-[700px] text-gray-100 leading-relaxed">

@@ -56,12 +56,6 @@
   - Very light backgrounds
   - Alternate row backgrounds
 
-### Accent Colors
-- **Green 700**: `#15803d` (Tailwind: `green-700`)
-  - Open Access badge text
-  
-- **Green 50**: `#f0fdf4` (Tailwind: `green-50`)
-  - Open Access badge background
 
 ### Base Colors
 - **Black**: `#000000` (Tailwind: `black`)

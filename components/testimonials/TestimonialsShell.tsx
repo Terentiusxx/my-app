@@ -98,7 +98,7 @@ export function TestimonialsShell({
         >
           <button
             onClick={handleReveal}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-red-500"
+            className=" cursor-pointer absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 flex items-center justify-center transition-colors z-10 focus:outline-none focus:ring-2 focus:ring-red-500"
             aria-label="Close and view all feedback"
           >
             <svg

@@ -180,7 +180,7 @@ export default function ContactPage() {
                       className="mt-1 mr-3 w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900"
                     />
                     <label htmlFor="consent" className="text-sm text-gray-600 leading-relaxed">
-                      I understand that responses may take a few working days. <span className="text-gray-400 text-xs">(REQUIRED)</span>
+                      I understand that responses may take up to 3 business days. <span className="text-gray-400 text-xs">(REQUIRED)</span>
                     </label>
                   </div>
 

@@ -135,7 +135,7 @@ const LatestResearch: React.FC = () => {
         <Button 
           variant="outline" 
           size="lg" 
-          className="rounded-full border-2 border-gray-900 hover:border-red-600 hover:bg-transparent hover:text-red-600 text-gray-900"
+          className=" cursor-pointer rounded-full border-2 border-gray-900 hover:border-red-600 hover:bg-transparent hover:text-red-600 text-gray-900"
           onClick={() => window.location.href = '/publications'}
         >
           View All Research

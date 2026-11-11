@@ -988,7 +988,7 @@ export default function AboutPage() {
                 </p>
               </Copy>
               <div className="flex flex-wrap gap-2 mb-10">
-                <span className="text-xs px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">Co CEO and Co Creator of PrivateLearn Academy</span>
+                <span className="text-xs px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">Co-Founder of PrivateLearn Academy</span>
               </div>
               <a
                 href="https://www.privatelearn.academy"

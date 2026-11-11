@@ -197,9 +197,9 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                   }}
                   viewport={{ once: true }}
                 >
-                    Transforming Today's Challenges into Tomorrow's{' '}
+                    Finding New Ways to <br></br>Learn, Discover and{' '}
                     <span className="relative inline-block">
-                      Success Stories
+                      Make a Difference
                       {/* Brush stroke underline */}
                       <span className="absolute left-0 right-0 top-1/2 h-8 -mx-4">
                         <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
@@ -213,8 +213,8 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
             <div className="border-l-4 border-red-600 pl-6 max-w-md">
                 <Copy delay={0.4}>
                   <p className="text-gray-700 text-base leading-relaxed">
-                    I bring innovation through expertise, authentic energy, and a passion for excellence. Whether it's inspiring audiences, advising organizations, or creating impactful content, I deliver results that matter.
-                  </p>
+                    My work spans statistics, data science, and higher education, from teaching students and conducting research to building PrivateLearn, a platform designed to make learning more accessible. I enjoy finding practical ways to apply knowledge and create opportunities for others to learn and grow.
+                    </p>
                 </Copy>
             </div>
         </div>
@@ -267,7 +267,7 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="relative min-w-[300px] md:min-w-[350px] lg:min-w-[400px] h-[500px] rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl snap-start"
+                className="relative min-w-75 md:min-w-87.5 lg:min-w-100 h-125 rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl snap-start"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -290,7 +290,7 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                 </div>
 
                 {/* Minimal Dark Overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
 
                 {/* Content */}
                 <div className="relative h-full flex flex-col justify-between p-8 text-white">
@@ -312,10 +312,13 @@ const WhatIDo: React.FC<Props> = ({ className = '' }) => {
                       <p className="text-white/95 mb-4 leading-relaxed text-sm">
                         {service.description}
                       </p>
-                      <Button variant="link" size="sm" className="text-white hover:text-white p-0 gap-2 hover:gap-3">
-                        View Details
+                      <a
+                        href="/about"
+                        className="inline-flex items-center gap-2 text-white hover:text-white cursor-pointer hover:gap-3 hover:underline transition-all"
+                      >
+                        Read more about me
                         <span>→</span>
-                      </Button>
+                      </a>
                     </div>
                   </div>
                 </div>

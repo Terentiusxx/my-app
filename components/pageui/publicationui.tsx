@@ -222,11 +222,6 @@ export default function PublicationUI({ initialPublications }: PublicationUIProp
                       >
                         {/* Header */}
                         <div className="mb-4">
-                          {pub.openAccess && (
-                            <span className="inline-block mb-3 px-2.5 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full border border-green-200">
-                              Open Access
-                            </span>
-                          )}
                           <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight line-clamp-3">
                             {pub.title}
                           </h3>

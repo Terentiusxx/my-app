@@ -101,11 +101,11 @@ export default function Intro() {
                     <SectionTitle text="MY PHILOSOPHY" />
                     <Copy>
                         <p className="text-white text-justify text-lg">
-                            Professional doesn't mean stiff. I believe real impact happens when expertise meets authentic enthusiasm. Let's shatter the boring blueprint.
+                            I am passionate about teaching, research, and finding practical ways to apply knowledge. Over the years, I have worked with students, researchers, and professionals, using statistics and data science to understand problems and develop solutions. I believe that learning should be engaging, accessible, and relevant beyond the classroom.
                         </p>
                     </Copy>
                     <Copy delay={0.3}>
-                        <p className="text-white/80 text-justify text-base mt-4">
+                        <p className="text-white font-bold text-justify text-base mt-4">
                             Nothing about me is self-made. I owe God everything!
                         </p>
                     </Copy>

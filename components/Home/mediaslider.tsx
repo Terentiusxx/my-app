@@ -305,7 +305,7 @@ const MediaSlider: React.FC<Props> = ({ items = defaultItems, className = '' }) 
             Media & Content
           </h2>
           <p className="text-white/80 text-sm md:text-lg mb-6 leading-snug">
-            Explore my latest LinkedIn video creations, keynotes, and insights. Combining expertise with authentic enthusiasm to deliver impactful content.
+            Explore my latest LinkedIn videos, talks, and insights, where I share perspectives on education, data science, and research, alongside experiences and lessons from my professional journey.\
           </p>
           
           <Button 

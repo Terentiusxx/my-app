@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import PageTopControls from "../components/layout/PageTopControls";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import "./globals.css";
+import "./global.css";
 
 const font = Inter({
   variable: "--font-inter",

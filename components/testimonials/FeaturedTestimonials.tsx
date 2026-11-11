@@ -134,7 +134,7 @@ export function FeaturedTestimonials({ testimonials, onReveal }: Props) {
                 aria-current={index === activeIndex ? "true" : "false"}
                 aria-label={`Go to testimonial ${index + 1}`}
                 onClick={() => setActiveIndex(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 ${
+                className={`cursor-pointerh-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 ${
                   index === activeIndex
                     ? "bg-red-600 w-8"
                     : index < activeIndex
